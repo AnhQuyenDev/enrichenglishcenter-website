@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ giáo viên - Trung Tâm Anh Ngữ Enrich</title>
+    <link rel="icon" type="image/png" href="public/images/logo.png">
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+</head>
+<body>
+
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="container mx-auto xl:px-6">
+            <nav class="flex justify-between items-center py-4">
+                
+                <a href="/" class="flex items-center xl:gap-3">
+                    <img src="public/images/logo.png" alt="Enrich English Center Logo" class="h-10 w-auto"> 
+                    <img src="public/images/enrich_text.png" alt="Enrich English Center Name" class="h-10 w-auto">
+                </a>
+
+                <div class="hidden xl:flex items-center space-x-8 font-semibold text-sm uppercase">
+                    <a href="index.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">TRANG CHỦ</a>
+                    <a href="aboutus.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">VỀ Enrich</a>
+                    <a href="teachers.html" class="font-bold text-orange-500 border-b-4 border-orange-500 pb-2 transition-colors duration-300">GIÁO VIÊN</a>
+                    <a href="courses.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">KHOÁ HỌC</a>
+                    <a href="outstanding_student.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">Học viên NỔI BẬT</a>
+                    <a href="news.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">TIN TỨC</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">LIÊN HỆ</a>
+                </div>
+
+                <div class="xl:hidden">
+                    <button id="mobile-menu-button" class="text-orange-600  hover:text-orange-500 focus:outline-none">
+                        <i id="menu-open-icon" class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-t">
+            <a href="index.html" class="block py-3 px-6 text-sm text-orange-500 bg-orange-50 font-semibold">TRANG CHỦ</a>
+            <a href="aboutus.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">VỀ Enrich</a>
+            <a href="teachers.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">GIÁO VIÊN</a>
+            <a href="courses.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">KHOÁ HỌC</a>
+            <a href="outstanding_student.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">Học viên NỔI BẬT</a>
+            <a href="news.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">TIN TỨC</a>
+            <a href="contact.html" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">LIÊN HỆ</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-gradient-to-r from-amber-300 to-orange-400 text-center py-16 px-4">
+            <img id="teacher-avatar" src="" alt="Professor Evelyn Reed" class="w-36 h-36 mx-auto rounded-full border-4 border-white shadow-lg mb-4">
+            <h1 id="teacher-name" class="text-4xl font-bold text-gray-800"></h1>
+            <p id="teacher-subject" class="text-lg text-gray-800 uppercase font-medium mt-1"></p>
+            <p id="teacher-bio" class="max-w-2xl mx-auto text-gray-800 mt-4"></p>
+        </section>
+
+        <section class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="pb-8 border-b">
+                        <h2 class="text-2xl font-bold mb-4">Giới thiệu</h2>
+                        <p id="teacher-introduction" class="text-gray-600 leading-relaxed">
+                        </p>
+                    </div>
+
+                    <div class="py-8 border-b grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Kinh nghiệm</h3>
+                            <ul id="experience-list" class="space-y-2 text-gray-600 list-disc list-inside">
+
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Chứng chỉ</h3>
+                             <ul id="certifications-list" class="space-y-2 text-gray-600 list-disc list-inside">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                        <h2 class="text-2xl font-bold mb-4">Thông tin liên hệ</h2>
+                         <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-orange-500 w-5 text-center"></i>
+                                <a id="contact-email" href="#" class="hover:text-orange-500"></a>
+                            </li>
+                            <li class="flex items-center space-x-3">
+                                <i class="fas fa-phone-alt text-orange-500 w-5 text-center"></i>
+                                <span id="contact-phone"></span>
+                            </li>
+                        </ul>
+                        <div id="social-links" class="flex space-x-4 mt-6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-gray-50 py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Thành tích</h2>
+                <div id="achievements-timeline" class="relative max-w-3xl mx-auto">
+                    <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-300"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
+
+                <div class="lg:col-span-4">
+                    <a href="#" class="flex items-center gap-3 mb-4">
+                        <img src="public/images/logo.png" alt="Enrich Logo" class="h-12">
+                        <img src="public/images/enrich_text.png" alt="Enrich Name" class="h-10 brightness-0 invert">
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        ENRICH mang đến môi trường học tiếng Anh hiện đại, hiệu quả cho mọi lứa tuổi, là nơi ươm mầm tri thức và khơi dậy đam mê học hỏi.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
+                            <i class="fa-brands fa-facebook text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
+                            <i class="fa-brands fa-tiktok text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h4 class="font-semibold text-white text-lg mb-4">Liên kết</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="index.html" class="font-bold hover:text-orange-400">Trang chủ</a></li>
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="aboutus.html" class="font-bold hover:text-orange-400">Về Enrich</a></li>
+                        <li><a href="teachers.html" class="font-bold border-l-4 border-orange-400 text-orange-400 transition-colors px-2">Giáo viên</a></li>
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="courses.html" class="font-bold hover:text-orange-400">Khóa học</a></li>
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="outstanding_student.html" class="font-bold hover:text-orange-400">Học viên nổi bật</a></li>
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="news.html" class="font-bold hover:text-orange-400">Tin tức</a></li>
+                        <li class="hover:translate-x-2 transition-all duration-300"><a href="contact.html" class="font-bold hover:text-orange-400">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h4 class="font-semibold text-white text-lg mb-4">Liên hệ</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-orange-400"></i>
+                            <a href="tel:0987654321" class="hover:text-orange-400 transition-colors">0987.654.321</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-globe text-orange-400"></i>
+                            <a href="#" class="hover:text-orange-400 transition-colors">enrich.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h4 class="font-semibold text-white text-lg mb-4">Các chi nhánh</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 1: Xã Phú Vinh, Phú Vang, Thừa Thiên Huế</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 2: Huyện Phú Vang, Thừa Thiên Huế</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 3: Phường Thuận An, Thừa Thiên Huế</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 4: Xã Vinh Lộc, Phú Vang, Thừa Thiên Huế</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 5: Phường Mỹ Thượng, Thừa Thiên Huế</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
+                            <span>Cơ sở 6: Xã Hưng Lộc, Thừa Thiên Huế</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 Enrich English Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="src/main.js"></script>
+    <script src="src/teacher_data.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Lấy id của giáo viên từ URL (ví dụ: teacher_detail.html?id=1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const teacherId = parseInt(urlParams.get('id'));
+
+        // 2. Tìm giáo viên tương ứng trong file data
+        const teacher = teachers_data.find(t => t.id === teacherId);
+
+        // 3. Nếu không tìm thấy, hiển thị thông báo
+        if (!teacher) {
+            document.querySelector('main').innerHTML = '<h1 class="text-center text-2xl font-bold py-20">Không tìm thấy thông tin giáo viên.</h1>';
+            return;
+        }
+
+        // --- RENDER DỮ LIỆU VÀO HTML ---
+
+        // A. Cập nhật thông tin cơ bản
+        document.getElementById('teacher-avatar').src = teacher.avatar;
+        document.getElementById('teacher-name').textContent = teacher.name;
+        document.getElementById('teacher-subject').textContent = teacher.subject;
+        document.getElementById('teacher-bio').textContent = teacher.bio;
+        document.getElementById('teacher-introduction').textContent = teacher.introduction;
+        document.title = teacher.name + " - Trung tâm Anh ngữ Enrich"; // Cập nhật tiêu đề trang
+
+        // B. Render danh sách kinh nghiệm
+        const experienceList = document.getElementById('experience-list');
+        experienceList.innerHTML = teacher.experience
+            .map(item => `<li>${item}</li>`)
+            .join('');
+
+        // C. Render danh sách chứng chỉ
+        const certificationsList = document.getElementById('certifications-list');
+        certificationsList.innerHTML = teacher.certifications
+            .map(item => `<li>${item}</li>`)
+            .join('');
+
+        // D. Render thông tin liên hệ
+        const contactEmail = document.getElementById('contact-email');
+        contactEmail.textContent = teacher.contact.email;
+        contactEmail.href = `mailto:${teacher.contact.email}`;
+        document.getElementById('contact-phone').textContent = teacher.contact.phone;
+        
+        const socialLinks = document.getElementById('social-links');
+        let socialHtml = '';
+        if (teacher.contact.facebook) {
+            socialHtml += `<a href="https://${teacher.contact.facebook}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>`;
+        }
+        if (teacher.contact.instagram) {
+            socialHtml += `<a href="https://${teacher.contact.instagram}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>`;
+        }
+        socialLinks.innerHTML = socialHtml;
+
+        // E. Render timeline thành tích (phần phức tạp nhất)
+        const achievementsTimeline = document.getElementById('achievements-timeline');
+        let timelineHtml = '<div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-300"></div>'; // Thêm lại đường kẻ dọc
+        
+        teacher.achievements.forEach((item, index) => {
+            // Kiểm tra vị trí chẵn/lẻ để xếp timeline so le
+            if (index % 2 === 0) { // Item bên trái
+                timelineHtml += `
+                    <div class="relative mb-8 flex justify-between items-center w-full">
+                        <div class="w-5/12">
+                            <h3 class="font-bold text-lg">${item.title}</h3>
+                        </div>
+                        <div class="z-10 bg-orange-500 text-white w-24 text-center py-1 rounded-full font-semibold">${item.year}</div>
+                        <div class="w-5/12"></div>
+                    </div>
+                `;
+            } else { // Item bên phải
+                timelineHtml += `
+                    <div class="relative mb-8 flex justify-between items-center w-full">
+                        <div class="w-5/12"></div>
+                        <div class="z-10 bg-orange-500 text-white w-24 text-center py-1 rounded-full font-semibold">${item.year}</div>
+                        <div class="w-5/12 text-left">
+                            <h3 class="font-bold text-lg">${item.title}</h3>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+        achievementsTimeline.innerHTML = timelineHtml;
+    });
+</script>
+</body>
+</html>
