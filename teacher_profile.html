@@ -6,7 +6,10 @@
     <title>Hồ sơ giáo viên - Trung Tâm Anh Ngữ Enrich</title>
     <link rel="icon" type="image/png" href="/enrichenglishcenter-website/assets/logo-DWcLnfnn.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
-  <link rel="stylesheet" crossorigin href="/enrichenglishcenter-website/assets/style-DfPRbVdC.css">
+  <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs"></script>
+  <script type="module" crossorigin src="/enrichenglishcenter-website/assets/main-C5XMmoEB.js"></script>
+  <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs"></script>
+  <link rel="stylesheet" crossorigin href="/enrichenglishcenter-website/assets/main-DfPRbVdC.css">
 </head>
 <body>
 
@@ -200,91 +203,5 @@
             </div>
         </div>
     </footer>
-    <script src="src/main.js"></script>
-    <script src="src/teacher_data.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Lấy id của giáo viên từ URL (ví dụ: teacher_detail.html?id=1)
-        const urlParams = new URLSearchParams(window.location.search);
-        const teacherId = parseInt(urlParams.get('id'));
-
-        // 2. Tìm giáo viên tương ứng trong file data
-        const teacher = teachers_data.find(t => t.id === teacherId);
-
-        // 3. Nếu không tìm thấy, hiển thị thông báo
-        if (!teacher) {
-            document.querySelector('main').innerHTML = '<h1 class="text-center text-2xl font-bold py-20">Không tìm thấy thông tin giáo viên.</h1>';
-            return;
-        }
-
-        // --- RENDER DỮ LIỆU VÀO HTML ---
-
-        // A. Cập nhật thông tin cơ bản
-        document.getElementById('teacher-avatar').src = teacher.avatar;
-        document.getElementById('teacher-name').textContent = teacher.name;
-        document.getElementById('teacher-subject').textContent = teacher.subject;
-        document.getElementById('teacher-bio').textContent = teacher.bio;
-        document.getElementById('teacher-introduction').textContent = teacher.introduction;
-        document.title = teacher.name + " - Trung tâm Anh ngữ Enrich"; // Cập nhật tiêu đề trang
-
-        // B. Render danh sách kinh nghiệm
-        const experienceList = document.getElementById('experience-list');
-        experienceList.innerHTML = teacher.experience
-            .map(item => `<li>${item}</li>`)
-            .join('');
-
-        // C. Render danh sách chứng chỉ
-        const certificationsList = document.getElementById('certifications-list');
-        certificationsList.innerHTML = teacher.certifications
-            .map(item => `<li>${item}</li>`)
-            .join('');
-
-        // D. Render thông tin liên hệ
-        const contactEmail = document.getElementById('contact-email');
-        contactEmail.textContent = teacher.contact.email;
-        contactEmail.href = `mailto:${teacher.contact.email}`;
-        document.getElementById('contact-phone').textContent = teacher.contact.phone;
-        
-        const socialLinks = document.getElementById('social-links');
-        let socialHtml = '';
-        if (teacher.contact.facebook) {
-            socialHtml += `<a href="https://${teacher.contact.facebook}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>`;
-        }
-        if (teacher.contact.instagram) {
-            socialHtml += `<a href="https://${teacher.contact.instagram}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>`;
-        }
-        socialLinks.innerHTML = socialHtml;
-
-        // E. Render timeline thành tích (phần phức tạp nhất)
-        const achievementsTimeline = document.getElementById('achievements-timeline');
-        let timelineHtml = '<div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-300"></div>'; // Thêm lại đường kẻ dọc
-        
-        teacher.achievements.forEach((item, index) => {
-            // Kiểm tra vị trí chẵn/lẻ để xếp timeline so le
-            if (index % 2 === 0) { // Item bên trái
-                timelineHtml += `
-                    <div class="relative mb-8 flex justify-between items-center w-full">
-                        <div class="w-5/12">
-                            <h3 class="font-bold text-lg">${item.title}</h3>
-                        </div>
-                        <div class="z-10 bg-orange-500 text-white w-24 text-center py-1 rounded-full font-semibold">${item.year}</div>
-                        <div class="w-5/12"></div>
-                    </div>
-                `;
-            } else { // Item bên phải
-                timelineHtml += `
-                    <div class="relative mb-8 flex justify-between items-center w-full">
-                        <div class="w-5/12"></div>
-                        <div class="z-10 bg-orange-500 text-white w-24 text-center py-1 rounded-full font-semibold">${item.year}</div>
-                        <div class="w-5/12 text-left">
-                            <h3 class="font-bold text-lg">${item.title}</h3>
-                        </div>
-                    </div>
-                `;
-            }
-        });
-        achievementsTimeline.innerHTML = timelineHtml;
-    });
-</script>
 </body>
 </html>
