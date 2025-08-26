@@ -7,13 +7,18 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions: # <--- THÊM VÀO: Cấp quyền ghi cho workflow
+      contents: write
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22 # <--- THAY ĐỔI: Sử dụng Node.js 20 thay vì 18
+
       - run: npm ci
       - run: npm run build
+
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
