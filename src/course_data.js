@@ -1,4 +1,4 @@
-const coursesData = [
+export const coursesData = [
     {
         id: 1,
         title: "Tiếng Anh Cơ Bản",
@@ -56,82 +56,3 @@ const coursesData = [
 ];
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 1. Lấy id của khóa học từ URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const courseId = parseInt(urlParams.get('id'));
-
-    // 2. Tìm khóa học tương ứng trong file data.js
-    const course = coursesData.find(c => c.id === courseId);
-
-    // 3. Nếu không tìm thấy, thông báo lỗi
-    if (!course) {
-        document.querySelector('main').innerHTML = '<h1 class="text-center text-2xl font-bold">Không tìm thấy khóa học.</h1>';
-        return;
-    }
-
-    // 4. Lấy các phần tử HTML bằng id
-    const durationEl = document.getElementById('course-duration');
-    const levelEl = document.getElementById('course-level');
-    const lessonsEl = document.getElementById('course-lessons');
-    const titleEl = document.getElementById('course-title');
-    const shortDescriptionEl = document.getElementById('course-short-des');
-    const longDescriptionEl = document.getElementById('course-long-des');
-    const feeEl = document.getElementById('course-fee');
-    const datesEl = document.getElementById('course-dates');
-    const statusEl = document.getElementById('course-status');
-
-    const whatLearnList = document.getElementById('what-learn-list');
-    const whoForList = document.getElementById('who-for-list');
-    const syllabusContainer = document.getElementById('syllabus-container');
-
-    // 5. Đổ dữ liệu vào các phần tử HTML
-    durationEl.textContent = course.duration;
-    levelEl.textContent = course.level;
-    lessonsEl.textContent = course.lessons;
-    titleEl.textContent = course.title;
-    shortDescriptionEl.textContent = course.shortDescription;
-    longDescriptionEl.textContent = course.longDescription;
-    feeEl.textContent = course.fee;
-    datesEl.textContent = course.schedule;
-    statusEl.textContent = course.status;
-
-    let whatLearnHtml = ''; // Tạo một chuỗi HTML rỗng
-    course.what_learn.forEach(item => {
-        // Với mỗi mục trong mảng what_learn, tạo một thẻ li và cộng vào chuỗi
-        whatLearnHtml += `
-            <li class="flex items-start">
-                <i class="fas fa-check text-orange-500 mr-3 mt-1"></i>
-                <span>${item}</span>
-            </li>
-        `;
-    });
-    whatLearnList.innerHTML = whatLearnHtml;
-
-    let whoForHtml = '';
-    course.who.forEach(item => {
-        whoForHtml += `
-            <li class="flex items-start">
-                <i class="fas fa-user-check text-orange-500 mr-3 mt-1"></i>
-                <span>${item}</span>
-            </li>
-        `;
-    });
-    whoForList.innerHTML = whoForHtml;
-
-    let syllabusHtml = '';
-    course.syllabus.forEach(item => {
-        syllabusHtml += `
-            <details class="group border-b pb-4">
-                <summary class="cursor-pointer font-semibold text-lg text-gray-800 group-hover:text-orange-500">
-                    ${item.title}
-                </summary>
-                <p class="text-gray-600 mt-4 pl-4">${item.description}</p>
-            </details>
-        `;
-    });
-    syllabusContainer.innerHTML = syllabusHtml;
-
-    // Cập nhật tiêu đề trang
-    document.title = course.title + " - Trung tâm Anh ngữ Enrich";
-});

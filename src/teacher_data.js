@@ -1,4 +1,4 @@
-const teachers_data = [
+export const teachers_data = [
     {
         id:1,
         avatar: "https://i.pravatar.cc/150?u=evelyn",
