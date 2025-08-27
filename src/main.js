@@ -2,6 +2,7 @@
 // PHẦN 1: IMPORT CÁC MODULE CẦN THIẾT
 // =================================================================
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
+import List from 'list.js';
 import { coursesData } from './course_data.js';
 import { teachers_data } from './teacher_data.js';
 
@@ -58,118 +59,57 @@ if (document.querySelector('.heroSwiper')) {
     });
 }
 
-if (document.querySelector('.achievementSwiper')) {
-    const swiper = new Swiper(".achievementSwiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 30,
-            },
-        },
+function initSwiper(selector, navSelectors, options) {
+  if (document.querySelector(selector)) {
+    return new Swiper(selector, {
+      spaceBetween: 30,
+      pagination: {
+        el: `${selector} .swiper-pagination`,
+        clickable: true,
+      },
+      navigation: {
+        nextEl: navSelectors.nextEl,
+        prevEl: navSelectors.prevEl,
+      },
+      ...options,
     });
+  }
+  return null;
 }
 
-if (document.querySelector('.popularCoursesSwiper')) {
-    const coursesSwiper = new Swiper(".popularCoursesSwiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        // Responsive breakpoints
-        breakpoints: {
-            // khi màn hình >= 640px
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            // khi màn hình >= 768px
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-    });
-}
+const achievementSwiper = initSwiper(".achievementSwiper", { nextEl: ".achievement-swiper-button-next", prevEl: ".achievement-swiper-button-prev" }, {
+  slidesPerView: 1,
+  breakpoints: {
+    640: { slidesPerView: 2, spaceBetween: 20 },
+    768: { slidesPerView: 3, spaceBetween: 30 },
+    1024: { slidesPerView: 4, spaceBetween: 30 },
+  },
+});
 
-if (document.querySelector('.instructorsSwiper')) {
-    const instructorsSwiper = new Swiper(".instructorsSwiper", {
-        // Thiết lập số slide hiển thị
-        slidesPerView: 2, // Hiển thị 2 giảng viên trên màn hình nhỏ
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        // Responsive breakpoints
-        breakpoints: {
-            // khi màn hình >= 768px (md)
-            768: {
-                slidesPerView: 4, // Hiển thị 4 giảng viên
-                spaceBetween: 30,
-            },
-        },
-    });
-}
+const coursesSwiper = initSwiper(".popularCoursesSwiper", { nextEl: ".course-swiper-button-next", prevEl: ".course-swiper-button-prev" }, {
+  slidesPerView: 1,
+  slidesPerGroup: 1,
+  breakpoints: {
+    640: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 20 },
+    768: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 30 },
+  },
+});
 
-if (document.querySelector('.newsSwiper')) {
-    const newsSwiper = new Swiper(".newsSwiper", {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        // Responsive breakpoints
-        breakpoints: {
-            // khi màn hình >= 640px
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            // khi màn hình >= 1024px
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-    });
-}
+const instructorsSwiper = initSwiper(".instructorsSwiper", { nextEl: ".instructor-swiper-button-next", prevEl: ".instructor-swiper-button-prev" }, {
+  slidesPerView: 2,
+  breakpoints: {
+    768: { slidesPerView: 4, spaceBetween: 30 },
+  },
+});
+
+const newsSwiper = initSwiper(".newsSwiper", { nextEl: ".news-swiper-button-next", prevEl: ".news-swiper-button-prev" }, {
+  slidesPerView: 1,
+  breakpoints: {
+    640: { slidesPerView: 2, spaceBetween: 20 },
+    1024: { slidesPerView: 3, spaceBetween: 30 },
+  },
+});
+
 
 
 
@@ -345,3 +285,144 @@ if (document.getElementById('teacher-name')) {
         achievementsTimeline.innerHTML = timelineHtml;
     });
 }
+
+// =================================================================
+// PHẦN 6: CODE CHẠY CHO TRANG KHOÁ HỌC
+// =================================================================
+/**
+ * Hàm gán các danh mục (category) cho mỗi khóa học để phục vụ việc lọc.
+ * @param {object} course - Đối tượng khóa học.
+ * @returns {object} - Các danh mục đã được gán.
+ */
+function assignCategories(course) {
+    const title = course.title.toLowerCase();
+    const who = course.who.join(' ').toLowerCase();
+
+    // Gán danh mục Trình độ (Level)
+    let levelCategory = 'other';
+    if (title.includes('pre a1') || title.includes('starters') || title.includes('movers') || title.includes('flyers')) levelCategory = 'yle';
+    else if (title.includes('giao tiếp') || title.includes('pronunciation')) levelCategory = 'giao-tiep';
+    else if (title.includes('ielts')) levelCategory = 'ielts';
+    else if (title.includes('grammar')) levelCategory = 'ngu-phap';
+    else if (title.includes('học sinh giỏi')) levelCategory = 'hsg';
+
+    // Gán danh mục Đối tượng (Audience)
+    let audienceCategory = 'other';
+    if (who.includes('3 tuổi') || who.includes('6 tuổi')) audienceCategory = 'mam-non';
+    else if (who.includes('tiểu học') || who.includes('6 đến 8') || who.includes('8-11')) audienceCategory = 'tieu-hoc';
+    else if (who.includes('thcs') || who.includes('thpt') || who.includes('học sinh giỏi')) audienceCategory = 'thcs-thpt';
+    else if (who.includes('sinh viên') || who.includes('người đi làm') || who.includes('người mới bắt đầu')) audienceCategory = 'sinh-vien';
+    
+    // Gán danh mục Lĩnh vực (Skill)
+    let skillCategory = 'other';
+    if (title.includes('giao tiếp')) skillCategory = 'giao-tiep';
+    else if (title.includes('phát âm')) skillCategory = 'phat-am';
+    else if (title.includes('grammar')) skillCategory = 'ngu-phap';
+    else if (title.includes('ielts') || title.includes('học sinh giỏi')) skillCategory = 'luyen-thi';
+
+    return { levelCategory, audienceCategory, skillCategory };
+}
+
+/**
+ * Hàm hiển thị các khóa học ra HTML.
+ */
+function createCourseCardHTML(course) {
+    return `
+        <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+            <img src="public/images/course4.jpg" alt="${course.title}" class="w-full h-48 object-cover">
+            <div class="p-6 flex flex-col flex-grow">
+                <h3 class="title font-bold text-xl mb-2 text-gray-800">${course.title}</h3> 
+                <p class="text-gray-600 text-sm mb-4 flex-grow">${course.shortDescription}</p>
+                <div class="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100 mt-auto">
+                    <span><i class="far fa-clock mr-2"></i>${course.duration}</span>
+                    <a href="course_detail.html?id=${course.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+/**
+ * Hàm chính để hiển thị các khóa học trên trang chủ (slider) và trang khóa học (grid).
+ */
+function displayCourses() {
+    // Lấy ra hai container
+    const coursesPageContainer = document.querySelector('#courses-list-wrapper .list');
+    const homePageContainer = document.getElementById('courses-wrapper');
+
+    // --- Xử lý cho trang chủ (Slider) ---
+    if (homePageContainer) {
+        homePageContainer.innerHTML = ''; // Xóa nội dung cũ
+        coursesData.forEach(course => {
+            // Với Swiper, mỗi card phải được bọc trong một thẻ div.swiper-slide
+            const slideWrapper = document.createElement('div');
+            slideWrapper.className = 'swiper-slide';
+            slideWrapper.innerHTML = createCourseCardHTML(course); // Gọi hàm tạo HTML
+            homePageContainer.appendChild(slideWrapper);
+        });
+    }
+
+    // --- Xử lý cho trang khóa học (Grid) ---
+    if (coursesPageContainer) {
+        coursesPageContainer.innerHTML = ''; // Xóa nội dung cũ
+        coursesData.forEach(course => {
+            const categories = assignCategories(course); // Lấy danh mục để lọc
+            
+            // Với trang grid, mỗi card cần các thuộc tính data-*
+            const gridItemWrapper = document.createElement('div');
+            gridItemWrapper.setAttribute('data-level', categories.levelCategory);
+            gridItemWrapper.setAttribute('data-audience', categories.audienceCategory);
+            gridItemWrapper.setAttribute('data-skill', categories.skillCategory);
+            gridItemWrapper.innerHTML = createCourseCardHTML(course); // Gọi hàm tạo HTML
+            coursesPageContainer.appendChild(gridItemWrapper);
+        });
+    }
+}
+
+// Gọi hàm này khi trang được tải
+document.addEventListener('DOMContentLoaded', displayCourses);
+
+// === KHỞI TẠO BỘ LỌC KHI TRANG ĐƯỢC TẢI ===
+document.addEventListener('DOMContentLoaded', () => {
+    if (!document.getElementById('courses-list-wrapper')) return;
+
+    displayCourses();
+
+    const options = {
+        valueNames: [
+            'title',
+            // Chỉ định List.js đọc các thuộc tính data-*
+            { data: ['level'] },
+            { data: ['audience'] },
+            { data: ['skill'] }
+        ]
+    };
+
+    const courseList = new List('courses-list-wrapper', options);
+
+    // Hàm thực hiện lọc
+    function updateFilters() {
+        const levelFilter = document.getElementById('level-filter').value;
+        const audienceFilter = document.getElementById('audience-filter').value;
+        const skillFilter = document.getElementById('skill-filter').value;
+
+        courseList.filter(item => {
+            const levelMatch = (levelFilter === 'all') || (item.values().level === levelFilter);
+            const audienceMatch = (audienceFilter === 'all') || (item.values().audience === audienceFilter);
+            const skillMatch = (skillFilter === 'all') || (item.values().skill === skillFilter);
+            
+            // Một khóa học chỉ hiển thị khi khớp TẤT CẢ các bộ lọc đang được chọn
+            return levelMatch && audienceMatch && skillMatch;
+        });
+    }
+
+    // Lắng nghe sự kiện thay đổi trên các dropdown lọc
+    document.querySelectorAll('.filter-select').forEach(select => {
+        select.addEventListener('change', updateFilters);
+    });
+
+    // Lắng nghe sự kiện thay đổi trên dropdown sắp xếp
+    document.getElementById('sort-by').addEventListener('change', (e) => {
+        const [sortBy, order] = e.target.value.split('-');
+        courseList.sort(sortBy, { order });
+    });
+});

@@ -36,22 +36,44 @@ details[open] > summary::after {
     content: '−';
 }
 
-.achievementSwiper, .popularCoursesSwiper, .instructorsSwiper, .newsSwiper {
-    --swiper-pagination-color: #f97316;  /* Màu cam-500 cho các chấm pagination */
-}
-
 .relative {
-    --swiper-navigation-color: #f97316;
-    --swiper-navigation-sides-offset: -50px; 
+  --swiper-navigation-color: #f97316; /* Cam-500 */
+  --swiper-pagination-color: #f97316; /* Cam-500 */
+}
+/* Mặc định (mobile <768px): ẩn navigation */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
 }
 
-.achievementSwiper .swiper-wrapper {
+/* Từ tablet trở lên: hiển thị navigation và đẩy offset */
+@media screen and (min-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex !important; /* hiện lại */
+  }
+
+  .relative {
+    --swiper-navigation-sides-offset: -50px;
+  }
+}
+
+.achievementSwiper .swiper-slide,
+.instructorsSwiper .swiper-slide,
+.popularCoursesSwiper .swiper-slide,
+.courseSwiper .swiper-slide,
+.newsSwiper .swiper-slide {
     align-items: stretch !important;
 }
 
-.achievementSwiper .swiper-slide {
-    height: auto !important;
+.achievementSwiper .swiper-slide,
+.instructorsSwiper .swiper-slide,
+.popularCoursesSwiper .swiper-slide,
+.courseSwiper .swiper-slide,
+.newsSwiper .swiper-slide {
+  height: auto !important;
 }
+
 
 .achievementSwiper .swiper-slide > .bg-white { 
     /* Nhắm đến thẻ card bên trong slide */
