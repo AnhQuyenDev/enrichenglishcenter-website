@@ -33,7 +33,7 @@ import pt from"https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";(fu
                     </div>
                 `}),o.innerHTML=l});function _t(t){const r=t.title.toLowerCase(),h=t.who.join(" ").toLowerCase();let n="other";r.includes("pre a1")||r.includes("starters")||r.includes("movers")||r.includes("flyers")?n="yle":r.includes("giao tiếp")||r.includes("pronunciation")?n="giao-tiep":r.includes("ielts")?n="ielts":r.includes("grammar")?n="ngu-phap":r.includes("học sinh giỏi")&&(n="hsg");let i="other";h.includes("3 tuổi")||h.includes("6 tuổi")?i="mam-non":h.includes("tiểu học")||h.includes("6 đến 8")||h.includes("8-11")?i="tieu-hoc":h.includes("thcs")||h.includes("thpt")||h.includes("học sinh giỏi")?i="thcs-thpt":(h.includes("sinh viên")||h.includes("người đi làm")||h.includes("người mới bắt đầu"))&&(i="sinh-vien");let a="other";return r.includes("giao tiếp")?a="giao-tiep":r.includes("phát âm")?a="phat-am":r.includes("grammar")?a="ngu-phap":(r.includes("ielts")||r.includes("học sinh giỏi"))&&(a="luyen-thi"),{levelCategory:n,audienceCategory:i,skillCategory:a}}function ft(t){return`
         <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-            <img src="public/images/course4.jpg" alt="${t.title}" class="w-full h-48 object-cover">
+            <img src="./images/course4.jpg" alt="${t.title}" class="w-full h-48 object-cover">
             <div class="p-6 flex flex-col flex-grow">
                 <h3 class="title font-bold text-xl mb-2 text-gray-800">${t.title}</h3> 
                 <p class="text-gray-600 text-sm mb-4 flex-grow">${t.shortDescription}</p>
