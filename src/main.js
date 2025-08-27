@@ -329,7 +329,7 @@ function assignCategories(course) {
 function createCourseCardHTML(course) {
     return `
         <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-            <img src="public/images/course4.jpg" alt="${course.title}" class="w-full h-48 object-cover">
+            <img src="./images/course4.jpg" alt="${course.title}" class="w-full h-48 object-cover">
             <div class="p-6 flex flex-col flex-grow">
                 <h3 class="title font-bold text-xl mb-2 text-gray-800">${course.title}</h3> 
                 <p class="text-gray-600 text-sm mb-4 flex-grow">${course.shortDescription}</p>
