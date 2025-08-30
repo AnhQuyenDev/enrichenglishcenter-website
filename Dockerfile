@@ -1,6 +1,6 @@
 # Giai đoạn 1: Xây dựng (Build) dự án
 # Sử dụng một image Node.js để cài đặt các gói phụ thuộc và build dự án
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Thiết lập thư mục làm việc trong container
 WORKDIR /app
