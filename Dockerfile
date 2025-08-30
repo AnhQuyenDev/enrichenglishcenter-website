@@ -1,34 +1,27 @@
-# Giai đoạn 1: Xây dựng (Build) dự án
-# Sử dụng một image Node.js để cài đặt các gói phụ thuộc và build dự án
+# Giai đoạn 1: Build dự án với Node.js
 FROM node:22-alpine AS builder
 
-# Thiết lập thư mục làm việc trong container
+# Thiết lập thư mục làm việc
 WORKDIR /app
 
-# Sao chép file package.json và package-lock.json (hoặc yarn.lock)
+# Sao chép các file quản lý package và cài đặt dependencies
 COPY package*.json ./
-
-# Cài đặt các gói phụ thuộc của dự án
 RUN npm install
 
-# Sao chép toàn bộ mã nguồn của dự án vào thư mục làm việc
+# Sao chép TOÀN BỘ mã nguồn (bao gồm cả thư mục 'public')
 COPY . .
 
-# Chạy lệnh build để tạo ra các file tĩnh
+# Chạy lệnh build của Vite
 RUN npm run build
 
-# Giai đoạn 2: Triển khai (Serve)
-# Sử dụng một image Nginx nhẹ để phục vụ các file tĩnh đã được build
+# Giai đoạn 2: Serve ứng dụng với Nginx
 FROM nginx:stable-alpine
 
-# Sao chép các file tĩnh từ giai đoạn 'builder' vào thư mục mặc định của Nginx
+# Sao chép các file tĩnh đã được build từ giai đoạn trước vào Nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Sao chép file cấu hình Nginx tùy chỉnh (nếu có)
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80 để cho phép truy cập từ bên ngoài
+# Expose port 80
 EXPOSE 80
 
-# Lệnh để khởi chạy Nginx khi container bắt đầu
+# Khởi chạy Nginx
 CMD ["nginx", "-g", "daemon off;"]

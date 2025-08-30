@@ -2,19 +2,9 @@ version: '3.8'
 
 services:
   web:
-    # Tên image sẽ được tạo ra
-    image: enrich-english-center
-    
-    # build: chỉ định Docker Compose tự build image từ Dockerfile trong thư mục hiện tại (.)
     build: .
-    
-    # Tên của container sẽ được tạo ra
+    image: enrich-english-center
     container_name: enrich-english-app
-    
-    # ports: Ánh xạ cổng 80 của container ra cổng 8080 của máy chủ VPS
-    # Bạn có thể thay đổi cổng 8080 thành bất kỳ cổng nào khác nếu muốn
     ports:
       - "8080:80"
-      
-    # restart: chính sách khởi động lại container. 'unless-stopped' sẽ tự động khởi động lại container trừ khi bạn dừng nó thủ công.
     restart: unless-stopped

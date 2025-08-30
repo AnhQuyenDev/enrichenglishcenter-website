@@ -1,6 +1,11 @@
-# Bỏ qua các thư mục và file không cần thiết
+# Bỏ qua các dependencies đã cài đặt và các bản build cũ
 node_modules
 dist
+
+# Bỏ qua các file và thư mục của Git
 .git
-.github
+.gitignore
+
+# Bỏ qua các file cấu hình của môi trường phát triển
+.env
 *.log
