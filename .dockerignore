@@ -1,0 +1,6 @@
+# Bỏ qua các thư mục và file không cần thiết
+node_modules
+dist
+.git
+.github
+*.log
