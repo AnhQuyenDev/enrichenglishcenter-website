@@ -39,7 +39,7 @@ import pt from"https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";(fu
                 <p class="text-gray-600 text-sm mb-4 flex-grow">${t.shortDescription}</p>
                 <div class="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100 mt-auto">
                     <span><i class="far fa-clock mr-2"></i>${t.duration}</span>
-                    <a href="course_detail.html?id=${t.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
+                    <a href="/course_detail/${t.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
                 </div>
             </div>
         </div>
