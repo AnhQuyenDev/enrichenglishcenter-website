@@ -1,0 +1,30 @@
+# Bật công cụ Rewrite
+RewriteEngine On
+Options -Indexes
+
+# --- PHẦN 1: QUY TẮC CHO CÁC TRANG CHI TIẾT (PRETTY URLS) ---
+# Ghi chú: ([0-9]+) nghĩa là "bắt lấy một hoặc nhiều chữ số"
+# $1 chính là chữ số đã được bắt
+
+# Biến /teacher/{id} thành /teacher_profile.html?id={id}
+RewriteRule ^teacher/([0-9]+)$ teacher_profile.html?id=$1 [L]
+
+# Biến /course/{id} thành /course_detail.html?id={id}
+RewriteRule ^course/([0-9]+)$ course_detail.html?id=$1 [L]
+
+# Biến /news/{id} thành /news_detail.html?id={id}
+RewriteRule ^news/([0-9]+)$ news_detail.html?id=$1 [L]
+
+# --- PHẦN 2: QUY TẮC CHUNG ĐỂ GIẤU ĐUÔI .html ---
+
+# Tự động chuyển hướng từ URL có .html sang URL không có .html (tốt cho SEO)
+# Ví dụ: Chuyển /teachers.html -> /teachers
+RewriteCond %{THE_REQUEST} \.html
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Giúp server hiểu URL không có .html
+# Ví dụ: Khi người dùng truy cập /teachers, server sẽ tự hiểu là mở file teachers.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
