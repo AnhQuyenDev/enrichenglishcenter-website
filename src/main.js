@@ -6,8 +6,6 @@ import List from 'list.js';
 import { coursesData } from './course_data.js';
 import { teachers_data } from './teacher_data.js';
 import { newsData } from './news_data.js';
-
-
 // =================================================================
 // PHẦN 2: CODE CHẠY TRÊN TẤT CẢ CÁC TRANG (MENU)
 // =================================================================
@@ -356,10 +354,12 @@ function displayCourses() {
     // --- Xử lý cho trang chủ (Slider) ---
     if (homePageContainer) {
         homePageContainer.innerHTML = ''; // Xóa nội dung cũ
-        coursesData.forEach(course => {
+        coursesData.forEach((course, index) => {
             // Với Swiper, mỗi card phải được bọc trong một thẻ div.swiper-slide
             const slideWrapper = document.createElement('div');
             slideWrapper.className = 'swiper-slide';
+            slideWrapper.setAttribute('data-aos', 'fade-up');
+            slideWrapper.setAttribute('data-aos-delay', index * 100);
             slideWrapper.innerHTML = createCourseCardHTML(course); // Gọi hàm tạo HTML
             homePageContainer.appendChild(slideWrapper);
         });
@@ -663,7 +663,6 @@ else if (path.includes('/news')) {
 }
 // Hàm để lấy lớp CSS cho nhãn (badge) dựa trên loại tin
 function getCategoryClasses(type) {
-    console.log("Hàm được gọi với type:", type); // Thêm dòng này
     const classMap = {
         'Sự kiện': 'bg-orange-500',
         'Thông báo': 'bg-purple-600',
@@ -671,7 +670,6 @@ function getCategoryClasses(type) {
         'Tuyển dụng': 'bg-emerald-500',
     };
     const result = classMap[type] || 'bg-gray-500';
-    console.log("Kết quả trả về:", result); // Thêm dòng này
     return result;
 }
 
@@ -692,12 +690,12 @@ if (newsSwiperWrapper) {
     const recentNews = sortedNews.slice(0, 8);
 
     // 2. Tạo chuỗi HTML cho các slide
-    const newsSlidesHTML = recentNews.map(article => {
+    const newsSlidesHTML = recentNews.map((article, index) => {
         const shortDescription = getShortDescription(article.sections);
         const categoryClasses = getCategoryClasses(article.type);
 
         return `
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-aos="fade-left" data-aos-delay="${index * 100}">
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col group">
                     <a href="/news/${article.id}" class="block overflow-hidden">
                         <img src="${article.mainImage}" alt="${article.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -810,4 +808,49 @@ document.addEventListener('DOMContentLoaded', function () {
             teamContainer.insertAdjacentHTML('beforeend', memberHTML);
         });
     }
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter');            
+    // Hàm này sẽ được gọi khi một phần tử được quan sát lọt vào màn hình
+    const runCounter = (entries) => {
+        entries.forEach(entry => {
+            // Kiểm tra xem phần tử có đang hiển thị trên màn hình không
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.innerText.slice(-1); // Lấy ký tự cuối (+ hoặc %)
+                
+                counter.innerText = '0' + (isNaN(suffix) ? suffix : ''); // Reset về 0
+                
+                let current = 0;
+                const increment = target / 100; // Chia nhỏ số lần cập nhật để mượt hơn
+
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        // Dùng toLocaleString() để tự thêm dấu phẩy cho số hàng nghìn
+                        counter.innerText = Math.ceil(current).toLocaleString('en-US') + (isNaN(suffix) ? suffix : '');
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString('en-US') + (isNaN(suffix) ? suffix : '');
+                    }
+                };
+                
+                updateCounter();
+                
+                // Sau khi chạy xong, ngừng quan sát phần tử này để không chạy lại
+                observer.unobserve(counter);
+            }
+        });
+    };
+
+    // Tạo một "người quan sát"
+    const observer = new IntersectionObserver(runCounter, {
+        threshold: 1 // Kích hoạt khi 50% phần tử hiện ra
+    });
+
+    // Bắt đầu quan sát tất cả các thẻ có class 'counter'
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
 });
