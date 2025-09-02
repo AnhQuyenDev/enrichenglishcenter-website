@@ -52,10 +52,6 @@ details[open] > summary::after {
   .swiper-button-prev {
     display: flex !important; /* hiện lại */
   }
-
-  .relative {
-    --swiper-navigation-sides-offset: -50px;
-  }
 }
 
 .achievementSwiper .swiper-slide,

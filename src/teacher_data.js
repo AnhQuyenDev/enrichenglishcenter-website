@@ -1,118 +1,99 @@
 export const teachers_data = [
     {
-        id:1,
-        avatar: "https://i.pravatar.cc/150?u=evelyn",
-        name: "Evelyn Reed",
-        subject: "Khoa học dữ liệu",
-        bio: "Nhà giáo dục chuyên dụng với hơn 15 năm kinh nghiệm trong phân tích dữ liệu và học máy. Đam mê định hình thế hệ các nhà khoa học dữ liệu tiếp theo.",
-        introduction: "Giáo sư Evelyn Reed là một học giả và học viên thành đạt trong lĩnh vực khoa học dữ liệu. Với bằng tiến sĩ trong khoa học máy tính từ Đại học Stanford, nghiên cứu của cô tập trung vào AI đạo đức và học máy có thể hiểu được. Cô đã xuất bản nhiều bài báo trên các tạp chí hàng đầu và được trình bày tại các hội nghị quốc tế. Evelyn tin vào một triết lý giảng dạy pha trộn lý thuyết và ứng dụng trong thế giới thực, đảm bảo sinh viên được chuẩn bị tốt cho ngành công nghiệp.",
-        experience: [
-            "Giáo sư Khoa học Dữ liệu, Đại học California, Berkeley (2015 - nay)",
-            "Nhà khoa học dữ liệu cao cấp, Google (2010 - 2015)",
-            "Nhà phân tích dữ liệu, IBM (2005 - 2010)"
+        "id": 1,
+        "avatar": "/images/van-thi-sao.jpg",
+        "name": "Văn Thị Sao",
+        "subject": "Ngôn ngữ Anh",
+        "bio": "Giảng viên Tiếng Anh trẻ tuổi, nhiệt huyết với bằng chứng nhận năng lực ngoại ngữ C1.",
+        "introduction": "Văn Thị Sao là một giáo viên tận tâm với chuyên ngành Ngôn ngữ Anh. Với kinh nghiệm giảng dạy tại Trung tâm Anh ngữ, cô luôn nỗ lực tạo ra một môi trường học tập tích cực và hiệu quả. Cô đặc biệt chú trọng vào việc phát triển kỹ năng giao tiếp và ngữ pháp cho học viên.",
+        "experience": [
+            "Giảng dạy tại Trung tâm Anh ngữ."
         ],
-        certifications: [
-            "Chứng nhận Khoa học Dữ liệu, Coursera (2018)",
-            "Chứng nhận Kỹ sư Học máy, Google (2017)",
-            "Chứng nhận Chuyên gia AI, IBM (2016)"
+        "certifications": [
+            "Chứng nhận Năng lực Ngoại ngữ C1"
         ],
-        achievements: [
-            {year: 2020, title: "Giải thưởng Giảng dạy Xuất sắc, Đại học California, Berkeley"},
-            {year: 2019, title: "Bài báo được trích dẫn nhiều nhất, Hội nghị Khoa học Dữ liệu Quốc tế"},
-            {year: 2018, title: "Thành viên của Hiệp hội Khoa học Dữ liệu"}
-        ],
-        contact: {
-            email: "e.reed@university.edu",
-            phone: "(123) 456-7890",
-            facebook: "facebook.com/evelyn.reed",
-            instagram: "instagram.com/evelyn.reed"
+        "achievements": [],
+        "contact": {
+            "email": "vanthisao2003@gmail.com",
+            "phone": "0815 250 531",
+            "facebook": "https://www.facebook.com/share/1EhSVoM277/?mibextid=wwXlfr"
         }
     },
     {
-        id:2,
-        avatar: "https://i.pravatar.cc/150?u=evelyn",
-        name: "Evelyn Reed",
-        subject: "Ngôn ngữ Anh",
-        bio: "Nhà giáo dục chuyên dụng với hơn 15 năm kinh nghiệm trong phân tích dữ liệu và học máy. Đam mê định hình thế hệ các nhà khoa học dữ liệu tiếp theo.",
-        introduction: "Giáo sư Evelyn Reed là một học giả và học viên thành đạt trong lĩnh vực khoa học dữ liệu. Với bằng tiến sĩ trong khoa học máy tính từ Đại học Stanford, nghiên cứu của cô tập trung vào AI đạo đức và học máy có thể hiểu được. Cô đã xuất bản nhiều bài báo trên các tạp chí hàng đầu và được trình bày tại các hội nghị quốc tế. Evelyn tin vào một triết lý giảng dạy pha trộn lý thuyết và ứng dụng trong thế giới thực, đảm bảo sinh viên được chuẩn bị tốt cho ngành công nghiệp.",
-        experience: [
-            "Giáo sư Khoa học Dữ liệu, Đại học California, Berkeley (2015 - nay)",
-            "Nhà khoa học dữ liệu cao cấp, Google (2010 - 2015)",
-            "Nhà phân tích dữ liệu, IBM (2005 - 2010)"
+        "id": 2,
+        "avatar": "/images/phan-thi-thuy-trang.jpg",
+        "name": "Phan Thị Thuỳ Trang",
+        "subject": "Sư Phạm Tiếng Anh",
+        "bio": "Giáo viên trẻ, nhiệt huyết với thành tích học tập ấn tượng và chứng chỉ IELTS C1.",
+        "introduction": "Phan Thị Thuỳ Trang là một giáo viên chuyên ngành Sư phạm Tiếng Anh đến từ Đại học Ngoại ngữ Huế. Với kinh nghiệm giảng dạy tại nhiều trung tâm và thành tích học tập xuất sắc, cô Trang mang đến cho học viên một phương pháp học tập hiệu quả, giúp học viên phát triển toàn diện các kỹ năng tiếng Anh.",
+        "experience": [
+            "Giảng dạy tại Trung tâm Anh ngữ Âu Mỹ.",
+            "Giảng dạy tại Trung tâm Anh ngữ Phương Mỹ."
         ],
-        certifications: [
-            "Chứng nhận Khoa học Dữ liệu, Coursera (2018)",
-            "Chứng nhận Kỹ sư Học máy, Google (2017)",
-            "Chứng nhận Chuyên gia AI, IBM (2016)"
+        "certifications": [
+            "Chứng chỉ IELTS C1"
         ],
-        achievements: [
-            {year: 2020, title: "Giải thưởng Giảng dạy Xuất sắc, Đại học California, Berkeley"},
-            {year: 2019, title: "Bài báo được trích dẫn nhiều nhất, Hội nghị Khoa học Dữ liệu Quốc tế"},
-            {year: 2018, title: "Thành viên của Hiệp hội Khoa học Dữ liệu"}
+        "achievements": [
+            {
+                "year": 1,
+                "title": "Giải nhì môn tiếng Anh thành phố Huế"
+            },
+            {
+                "year": 2,
+                "title": "Điểm thi xét tuyển đại học môn tiếng Anh 9.75"
+            }
         ],
-        contact: {
-            email: "e.reed@university.edu",
-            phone: "(123) 456-7890",
-            facebook: "facebook.com/evelyn.reed",
-            instagram: "instagram.com/evelyn.reed"
+        "contact": {
+            "email": "trangphan040902@gmail.com",
+            "phone": "0372 717 029",
+            "facebook": "https://www.facebook.com/share/1C1aWDxfie/?mibextid=wwXIfr"
         }
     },
     {
-        id:3,
-        avatar: "https://i.pravatar.cc/150?u=evelyn",
-        name: "Evelyn Reed",
-        subject: "Cử nhân Ngôn ngữ Anh",
-        bio: "Nhà giáo dục chuyên dụng với hơn 15 năm kinh nghiệm trong phân tích dữ liệu và học máy. Đam mê định hình thế hệ các nhà khoa học dữ liệu tiếp theo.",
-        introduction: "Giáo sư Evelyn Reed là một học giả và học viên thành đạt trong lĩnh vực khoa học dữ liệu. Với bằng tiến sĩ trong khoa học máy tính từ Đại học Stanford, nghiên cứu của cô tập trung vào AI đạo đức và học máy có thể hiểu được. Cô đã xuất bản nhiều bài báo trên các tạp chí hàng đầu và được trình bày tại các hội nghị quốc tế. Evelyn tin vào một triết lý giảng dạy pha trộn lý thuyết và ứng dụng trong thế giới thực, đảm bảo sinh viên được chuẩn bị tốt cho ngành công nghiệp.",
-        experience: [
-            "Giáo sư Khoa học Dữ liệu, Đại học California, Berkeley (2015 - nay)",
-            "Nhà khoa học dữ liệu cao cấp, Google (2010 - 2015)",
-            "Nhà phân tích dữ liệu, IBM (2005 - 2010)"
+        "id": 3,
+        "avatar": "/images/hoang-thi-my-linh.jpg",
+        "name": "Hoàng Thị Mỹ Linh",
+        "subject": "Ngôn ngữ Anh",
+        "bio": "Giảng viên tiếng Anh có kinh nghiệm trợ giảng và giảng dạy 3 năm cho mọi lứa tuổi.",
+        "introduction": "Hoàng Thị Mỹ Linh là một giáo viên tiếng Anh giàu kinh nghiệm với 3 năm giảng dạy cho nhiều đối tượng học viên khác nhau. Cô sở hữu các chứng chỉ giảng dạy quốc tế như Tesol và C1, đảm bảo chất lượng giảng dạy và hiệu quả học tập cho học viên.",
+        "experience": [
+            "3 năm trợ giảng và giảng dạy tiếng Anh cho mọi lứa tuổi."
         ],
-        certifications: [
-            "Chứng nhận Khoa học Dữ liệu, Coursera (2018)",
-            "Chứng nhận Kỹ sư Học máy, Google (2017)",
-            "Chứng nhận Chuyên gia AI, IBM (2016)"
+        "certifications": [
+            "Chứng chỉ Tesol",
+            "Chứng chỉ C1"
         ],
-        achievements: [
-            {year: 2020, title: "Giải thưởng Giảng dạy Xuất sắc, Đại học California, Berkeley"},
-            {year: 2019, title: "Bài báo được trích dẫn nhiều nhất, Hội nghị Khoa học Dữ liệu Quốc tế"},
-            {year: 2018, title: "Thành viên của Hiệp hội Khoa học Dữ liệu"}
-        ],
-        contact: {
-            email: "e.reed@university.edu",
-            phone: "(123) 456-7890",
-            facebook: "facebook.com/evelyn.reed",
-            instagram: "instagram.com/evelyn.reed"
+        "achievements": [],
+        "contact": {
+            "email": "mylinhhoang2002@gmail.com",
+            "phone": "0339635116"
         }
     },
-    {
-        id:4,
-        avatar: "https://i.pravatar.cc/150?u=evelyn",
-        name: "Evelyn Reed",
-        subject: "Cử nhân Ngôn ngữ Trung",
-        bio: "Nhà giáo dục chuyên dụng với hơn 15 năm kinh nghiệm trong phân tích dữ liệu và học máy. Đam mê định hình thế hệ các nhà khoa học dữ liệu tiếp theo.",
-        introduction: "Giáo sư Evelyn Reed là một học giả và học viên thành đạt trong lĩnh vực khoa học dữ liệu. Với bằng tiến sĩ trong khoa học máy tính từ Đại học Stanford, nghiên cứu của cô tập trung vào AI đạo đức và học máy có thể hiểu được. Cô đã xuất bản nhiều bài báo trên các tạp chí hàng đầu và được trình bày tại các hội nghị quốc tế. Evelyn tin vào một triết lý giảng dạy pha trộn lý thuyết và ứng dụng trong thế giới thực, đảm bảo sinh viên được chuẩn bị tốt cho ngành công nghiệp.",
-        experience: [
-            "Giáo sư Khoa học Dữ liệu, Đại học California, Berkeley (2015 - nay)",
-            "Nhà khoa học dữ liệu cao cấp, Google (2010 - 2015)",
-            "Nhà phân tích dữ liệu, IBM (2005 - 2010)"
+     {
+        "id": 4,
+        "avatar": "/images/cohaoavatar.jpg", // Bạn cần cập nhật đường dẫn ảnh chính xác
+        "name": "Nguyễn Bích Hảo",
+        "subject": "CEO & Founder",
+        "bio": "Nhà sáng lập và Giám đốc điều hành của Enrich, người dẫn dắt và truyền cảm hứng cho toàn bộ đội ngũ.",
+        "introduction": "Với tầm nhìn chiến lược và đam mê cháy bỏng với giáo dục, cô Nguyễn Bích Hảo đã sáng lập Enrich với mong muốn tạo ra một môi trường học tập Anh ngữ chất lượng cao và sáng tạo. Cô là người định hướng phát triển, đảm bảo mọi hoạt động của trung tâm đều hướng tới lợi ích và sự tiến bộ của học viên.",
+        "experience": [
+            "Sáng lập và điều hành Trung tâm Anh ngữ Enrich.",
+            "Nhiều năm kinh nghiệm trong lĩnh vực quản lý giáo dục và phát triển doanh nghiệp."
         ],
-        certifications: [
-            "Chứng nhận Khoa học Dữ liệu, Coursera (2018)",
-            "Chứng nhận Kỹ sư Học máy, Google (2017)",
-            "Chứng nhận Chuyên gia AI, IBM (2016)"
+        "certifications": [
+            "Chứng chỉ Quản lý Giáo dục Cao cấp",
+            "Chứng chỉ Lãnh đạo và Quản trị Doanh nghiệp"
         ],
-        achievements: [
-            {year: 2020, title: "Giải thưởng Giảng dạy Xuất sắc, Đại học California, Berkeley"},
-            {year: 2019, title: "Bài báo được trích dẫn nhiều nhất, Hội nghị Khoa học Dữ liệu Quốc tế"},
-            {year: 2018, title: "Thành viên của Hiệp hội Khoa học Dữ liệu"}
+        "achievements": [
+             {
+                "year": 2024,
+                "title": "Sáng lập và xây dựng thành công thương hiệu Enrich."
+            }
         ],
-        contact: {
-            email: "e.reed@university.edu",
-            phone: "(123) 456-7890",
-            facebook: "facebook.com/evelyn.reed",
-            instagram: "instagram.com/evelyn.reed"
+        "contact": {
+            "email": "bichhao.ceo@enrich.edu.vn",
+            "phone": "0933 701 555",
+            "facebook": "https://www.facebook.com/bichhao.nguyen.520"
         }
     }
 ]

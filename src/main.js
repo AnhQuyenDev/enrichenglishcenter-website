@@ -5,6 +5,8 @@ import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs
 import List from 'list.js';
 import { coursesData } from './course_data.js';
 import { teachers_data } from './teacher_data.js';
+import { newsData } from './news_data.js';
+
 
 // =================================================================
 // PHẦN 2: CODE CHẠY TRÊN TẤT CẢ CÁC TRANG (MENU)
@@ -119,8 +121,9 @@ const newsSwiper = initSwiper(".newsSwiper", { nextEl: ".news-swiper-button-next
 if (document.getElementById('course-title')) {
     document.addEventListener('DOMContentLoaded', function() {
         // 1. Lấy id của khóa học từ URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const courseId = parseInt(urlParams.get('id'));
+        const urlParams = window.location.pathname.split('/');
+        const courseIdString = urlParams.pop() || urlParams.pop();
+        const courseId = parseInt(courseIdString, 10);
 
         // 2. Tìm khóa học tương ứng trong file data.js
         const course = coursesData.find(c => c.id === courseId);
@@ -204,8 +207,9 @@ if (document.getElementById('course-title')) {
 if (document.getElementById('teacher-name')) {
     document.addEventListener('DOMContentLoaded', () => {
         // 1. Lấy id của giáo viên từ URL (ví dụ: teacher_detail.html?id=1)
-        const urlParams = new URLSearchParams(window.location.search);
-        const teacherId = parseInt(urlParams.get('id'));
+        const pathParts = window.location.pathname.split('/');
+        const teacherIdString = pathParts.pop() || pathParts.pop();
+        const teacherId = parseInt(teacherIdString, 10);
 
         // 2. Tìm giáo viên tương ứng trong file data
         const teacher = teachers_data.find(t => t.id === teacherId);
@@ -247,10 +251,10 @@ if (document.getElementById('teacher-name')) {
         const socialLinks = document.getElementById('social-links');
         let socialHtml = '';
         if (teacher.contact.facebook) {
-            socialHtml += `<a href="https://${teacher.contact.facebook}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>`;
+            socialHtml += `<a href="${teacher.contact.facebook}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>`;
         }
         if (teacher.contact.instagram) {
-            socialHtml += `<a href="https://${teacher.contact.instagram}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>`;
+            socialHtml += `<a href="${teacher.contact.instagram}" target="_blank" class="w-10 h-10 flex items-center justify-center border rounded-full text-gray-600 hover:bg-orange-500 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>`;
         }
         socialLinks.innerHTML = socialHtml;
 
@@ -335,7 +339,7 @@ function createCourseCardHTML(course) {
                 <p class="text-gray-600 text-sm mb-4 flex-grow">${course.shortDescription}</p>
                 <div class="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100 mt-auto">
                     <span><i class="far fa-clock mr-2"></i>${course.duration}</span>
-                    <a href="/course_detail/${course.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
+                    <a href="/course/${course.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
                 </div>
             </div>
         </div>
@@ -425,4 +429,385 @@ document.addEventListener('DOMContentLoaded', () => {
         const [sortBy, order] = e.target.value.split('-');
         courseList.sort(sortBy, { order });
     });
+});
+
+// =================================================================
+// =================================================================
+// ===== 1. CÁC HÀM HỖ TRỢ CHUNG (DÙNG CHO CẢ 2 TRANG) ==========
+// =================================================================
+
+// Chuyển đổi chuỗi ngày tháng tiếng Việt sang đối tượng Date để sắp xếp
+const parseVietnameseDate = (dateString) => {
+    const parts = dateString.replace('tháng ', '').replace(',', '').split(' ');
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+    return new Date(year, month, day);
+};
+
+// Lấy đoạn văn bản đầu tiên làm mô tả ngắn
+const getShortDescription = (sections) => {
+    const firstParagraph = sections.find(section => section.type === 'paragraph');
+    if (firstParagraph) {
+        return firstParagraph.content.length > 120 
+            ? firstParagraph.content.substring(0, 120) + '...' 
+            : firstParagraph.content;
+    }
+    return 'Nhấn để xem chi tiết...';
+};
+
+// Chuyển đổi mảng sections của bài viết thành HTML (dùng cho trang chi tiết)
+function renderSections(sections) {
+    if (!sections) return '';
+    return sections.map(section => {
+        switch (section.type) {
+            case 'paragraph':
+                return `<p>${section.content}</p>`;
+            case 'heading':
+                return `<h2 class="font-bold text-2xl text-gray-800">${section.content}</h2>`;
+            case 'image':
+                return `
+                    <figure>
+                        <img src="${section.src}" alt="${section.caption || 'Article image'}" class="w-full h-auto rounded-lg shadow-md">
+                        <figcaption class="text-center text-sm text-gray-500 mt-2">${section.caption}</figcaption>
+                    </figure>
+                `;
+            case 'quote':
+                return `
+                    <blockquote>
+                        <p class="border-l-4 border-orange-400 pl-4 italic text-gray-600">"${section.content}"</p>
+                    </blockquote>
+                `;
+            default:
+                return '';
+        }
+    }).join('');
+}
+
+
+// =================================================================
+// ===== 2. KIỂM TRA URL ĐỂ CHẠY CODE TƯƠNG ỨNG ===================
+// =================================================================
+
+const path = window.location.pathname;
+// **THAY ĐỔI 1**: Dùng biểu thức chính quy để nhận diện trang chi tiết /news/{id}
+const detailPageRegex = /^\/news\/[0-9]+$/;
+
+// ------ A. NẾU LÀ TRANG CHI TIẾT TIN TỨC (/news/{id}) ------
+if (detailPageRegex.test(path)) {
+    // **THAY ĐỔI 2**: Lấy ID từ chính đường dẫn URL, không dùng query param nữa
+    // Ví dụ: "/news/3" -> split('/') -> ["", "news", "3"]. Lấy phần tử thứ 2.
+    const articleId = parseInt(path.split('/')[2], 10);
+
+    const articleContainer = document.getElementById('article-container');
+    const relatedArticlesContainer = document.getElementById('related-articles-container');
+    const article = newsData.find(item => item.id === articleId);
+
+    if (article && articleContainer) {
+        document.title = `${article.title} - Enrich English Center`;
+        const articleContentHTML = renderSections(article.sections);
+        articleContainer.innerHTML = `
+            <header class="mb-8">
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-800 leading-tight">${article.title}</h1>
+                <p class="mt-4 text-gray-500">Đăng bởi <span class="font-semibold text-gray-700">${article.author}</span> vào ngày ${article.publishDate}</p>
+            </header>
+            <figure class="mb-8">
+                <img src="${article.mainImage}" alt="${article.title}" class="w-full h-auto rounded-lg shadow-lg">
+            </figure>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">${articleContentHTML}</div>
+            ${article.authorImage ? `
+            <div class="mt-16 bg-gray-50 rounded-lg p-8 flex items-center gap-6">
+                <img src="${article.authorImage}" alt="${article.author}" class="w-20 h-20 rounded-full object-cover">
+                <div>
+                    <h4 class="font-bold text-xl text-gray-800">${article.author}</h4>
+                    <p class="text-sm text-gray-500 mb-2">${article.authorTitle || ''}</p>
+                </div>
+            </div>` : ''}
+        `;
+    } else if (articleContainer) {
+        articleContainer.innerHTML = `<h1 class="text-3xl md:text-5xl font-bold text-center text-red-500">404 - Bài viết không tồn tại</h1><p class="text-center mt-4 text-gray-600">Vui lòng quay lại <a href="/news" class="text-orange-500 font-semibold hover:underline">trang tin tức</a>.</p>`;
+    }
+
+    if (relatedArticlesContainer) {
+        const relatedArticles = newsData.filter(item => item.id !== articleId).slice(0, 3);
+        relatedArticlesContainer.innerHTML = relatedArticles.map(related => `
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                <a href="/news/${related.id}"><img src="${related.mainImage}" alt="${related.title}" class="w-full h-48 object-cover"></a>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 leading-tight h-14 overflow-hidden"><a href="/news/${related.id}">${related.title}</a></h3>
+                    <a href="/news/${related.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết &rarr;</a>
+                </div>
+            </div>
+        `).join('');
+    }
+} 
+// ------ B. NẾU LÀ TRANG DANH SÁCH TIN TỨC (/news) ------
+else if (path.includes('/news')) {
+    // --- KHAI BÁO CÁC BIẾN VÀ ELEMENT ---
+    const sortedNews = newsData.sort((a, b) => parseVietnameseDate(b.publishDate) - parseVietnameseDate(a.publishDate));
+    const featuredNewsContainer = document.getElementById('featured-news');
+    const latestNewsListContainer = document.getElementById('latest-news-list');
+    const popularStoriesListContainer = document.getElementById('popular-stories-list');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const viewMorePopularBtn = document.getElementById('view-more-popular-btn');
+    const latestNewsHeading = document.getElementById('latest-news-heading');
+    const popularStoriesHeading = document.getElementById('popular-stories-heading'); // Thêm element heading
+
+    // --- PHẦN TIN NỔI BẬT (Không thay đổi) ---
+    if (sortedNews.length > 0 && featuredNewsContainer) {
+        const featuredArticle = sortedNews[0];
+        featuredNewsContainer.innerHTML = `
+            <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                <a href="/news/${featuredArticle.id}">
+                    <img src="${featuredArticle.mainImage}" alt="${featuredArticle.title}" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" style="aspect-ratio: 16/9;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 p-6 md:p-8 text-white">
+                        <span class="text-xs font-semibold ${getCategoryClasses(featuredArticle.type)} px-2 py-1 rounded">${featuredArticle.type}</span>
+                        <h1 class="text-2xl md:text-3xl font-bold mt-2 leading-tight group-hover:text-orange-300 transition-colors">${featuredArticle.title}</h1>
+                        <p class="hidden md:block text-sm mt-2 text-gray-200">${getShortDescription(featuredArticle.sections)}</p>
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+
+    // --- LOGIC CHO PHẦN TIN MỚI NHẤT (XEM THÊM & RÚT GỌN) ---
+    const INITIAL_LATEST_COUNT = 2;
+    let isLatestNewsExpanded = false;
+
+    const renderLatestNews = () => {
+        const articlesToRender = isLatestNewsExpanded ?
+            sortedNews.slice(1) :
+            sortedNews.slice(1, 1 + INITIAL_LATEST_COUNT);
+
+        latestNewsListContainer.innerHTML = articlesToRender.map(article => `
+            <article class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 group">
+                 <a href="/news/${article.id}" class="w-full sm:w-48 h-36 flex-shrink-0 block">
+                    <img src="${article.mainImage}" alt="${article.title}" class="w-full h-full object-cover rounded-lg group-hover:opacity-80 transition-opacity">
+                </a>
+                <div>
+                    <span class="text-xs font-semibold ${getCategoryClasses(article.type).replace('bg-', 'text-')}">${article.type}</span>
+                    <h3 class="text-lg font-bold text-gray-800 mt-1 leading-tight group-hover:text-orange-500 transition-colors">
+                        <a href="/news/${article.id}">${article.title}</a>
+                    </h3>
+                    <p class="text-sm text-gray-600 mt-2 line-clamp-2">${getShortDescription(article.sections)}</p>
+                    <p class="text-xs text-gray-500 mt-3">${article.publishDate}</p>
+                </div>
+            </article>
+        `).join('');
+
+        if (sortedNews.length - 1 > INITIAL_LATEST_COUNT) {
+            loadMoreBtn.style.display = 'block';
+            loadMoreBtn.textContent = isLatestNewsExpanded ? 'Rút gọn' : 'Xem tất cả';
+        } else {
+            loadMoreBtn.style.display = 'none';
+        }
+    };
+    
+    renderLatestNews();
+
+    loadMoreBtn.addEventListener('click', () => {
+        isLatestNewsExpanded = !isLatestNewsExpanded;
+        renderLatestNews();
+        if (!isLatestNewsExpanded && latestNewsHeading) {
+            latestNewsHeading.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // --- LOGIC MỚI CHO PHẦN TIN PHỔ BIẾN (XEM THÊM & RÚT GỌN) ---
+    const INITIAL_POPULAR_COUNT = 3;
+    let isPopularNewsExpanded = false;
+
+    const renderPopularNews = () => {
+        // Tin phổ biến được lấy từ đầu danh sách đã sắp xếp
+        const articlesToRender = isPopularNewsExpanded ?
+            sortedNews : // Hiển thị tất cả
+            sortedNews.slice(0, INITIAL_POPULAR_COUNT); // Hiển thị số lượng ban đầu
+
+        popularStoriesListContainer.innerHTML = articlesToRender.map(article => `
+            <div class="flex space-x-3 group">
+                <a href="/news/${article.id}" class="w-20 h-16 flex-shrink-0 block">
+                    <img src="${article.mainImage}" alt="${article.title}" class="w-full h-full object-cover rounded-md group-hover:opacity-80 transition-opacity">
+                </a>
+                <div>
+                    <h3 class="font-semibold text-sm text-gray-800 leading-tight group-hover:text-orange-500 transition-colors">
+                        <a href="/news/${article.id}">${article.title}</a>
+                    </h3>
+                    <p class="text-xs text-gray-500 mt-1">${article.publishDate}</p>
+                </div>
+            </div>
+        `).join('');
+        
+        // Cập nhật nút
+        if (sortedNews.length > INITIAL_POPULAR_COUNT) {
+            viewMorePopularBtn.style.display = 'block';
+            viewMorePopularBtn.innerHTML = isPopularNewsExpanded ? '← Rút gọn' : 'Xem thêm →';
+        } else {
+            viewMorePopularBtn.style.display = 'none';
+        }
+    };
+
+    // Render lần đầu cho tin phổ biến
+    renderPopularNews();
+
+    // Thêm sự kiện click cho nút "Xem thêm ->"
+    viewMorePopularBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Ngăn hành vi mặc định của thẻ <a>
+        isPopularNewsExpanded = !isPopularNewsExpanded; // Đảo ngược trạng thái
+        renderPopularNews(); // Render lại
+        if (!isPopularNewsExpanded && popularStoriesHeading) {
+            // Nếu vừa rút gọn, cuộn lên đầu mục
+            popularStoriesHeading.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+// Hàm để lấy lớp CSS cho nhãn (badge) dựa trên loại tin
+function getCategoryClasses(type) {
+    console.log("Hàm được gọi với type:", type); // Thêm dòng này
+    const classMap = {
+        'Sự kiện': 'bg-orange-500',
+        'Thông báo': 'bg-purple-600',
+        'Hoạt động Cộng đồng': 'bg-sky-500',
+        'Tuyển dụng': 'bg-emerald-500',
+    };
+    const result = classMap[type] || 'bg-gray-500';
+    console.log("Kết quả trả về:", result); // Thêm dòng này
+    return result;
+}
+
+// Giả sử đoạn mã này nằm trong file main.js của bạn
+// và bạn đã import newsData ở đầu file.
+// import { newsData } from './data/newsData.js';
+// import Swiper from 'swiper'; // Hoặc import từ CDN
+
+// --- BẮT ĐẦU PHẦN CODE CHO NEWS SLIDER TRÊN TRANG CHỦ ---
+
+// Lấy các element cần thiết
+const newsSwiperWrapper = document.getElementById('news-swiper-wrapper');
+
+// Kiểm tra xem element có tồn tại không (để tránh lỗi khi ở trang khác)
+if (newsSwiperWrapper) {
+    // 1. Sắp xếp tin tức và chỉ lấy 8 bài mới nhất để hiển thị
+    const sortedNews = newsData.sort((a, b) => parseVietnameseDate(b.publishDate) - parseVietnameseDate(a.publishDate));
+    const recentNews = sortedNews.slice(0, 8);
+
+    // 2. Tạo chuỗi HTML cho các slide
+    const newsSlidesHTML = recentNews.map(article => {
+        const shortDescription = getShortDescription(article.sections);
+        const categoryClasses = getCategoryClasses(article.type);
+
+        return `
+            <div class="swiper-slide">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col group">
+                    <a href="/news/${article.id}" class="block overflow-hidden">
+                        <img src="${article.mainImage}" alt="${article.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                    </a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
+                            <span class="${categoryClasses} font-semibold rounded-full px-3 py-1 text-xs text-white">${article.type}</span>
+                            <time datetime="${new Date(parseVietnameseDate(article.publishDate)).toISOString().split('T')[0]}">${article.publishDate}</time>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 line-clamp-2 h-14">
+                            <a href="/news/${article.id}" class="hover:text-orange-500 transition-colors">${article.title}</a>
+                        </h3>
+                        <p class="text-gray-600 flex-grow mb-4 line-clamp-3">${shortDescription}</p>
+                        <a href="/news/${article.id}" class="text-orange-500 font-semibold self-start hover:underline">Đọc thêm →</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // 3. Chèn HTML vào wrapper của swiper
+    newsSwiperWrapper.innerHTML = newsSlidesHTML;
+}
+// --- KẾT THÚC PHẦN CODE CHO NEWS SLIDER ---
+
+// Lưu ý: Các hàm helper như parseVietnameseDate, getShortDescription, getCategoryClasses
+// cần phải có sẵn trong file này hoặc được import từ file khác.
+
+// --- BẮT ĐẦU PHẦN CODE ĐỔ DỮ LIỆU GIÁO VIÊN ---
+
+// 1. Lấy element container
+const teacherListContainer = document.getElementById('teacher-list-container');
+
+// 2. Kiểm tra xem container có tồn tại trên trang không
+if (teacherListContainer) {
+    
+    // 3. Dùng hàm map để tạo chuỗi HTML cho mỗi giáo viên
+    const teachersHTML = teachers_data.map(teacher => {
+        // Cắt ngắn phần bio để hiển thị trên card
+        const shortBio = teacher.bio.length > 70 ? teacher.bio.substring(0, 70) + '...' : teacher.bio;
+
+        return `
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm text-center group overflow-hidden">
+                <a href="/teacher/${teacher.id}" class="block">
+                    <img src="${teacher.avatar}" alt="${teacher.name}" class="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300">
+                </a>
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-gray-800">${teacher.name}</h4>
+                    <p class="text-sm text-gray-500 mb-2">${teacher.subject}</p>
+                    <p class="text-gray-600 text-sm mb-4 h-12">${shortBio}</p>
+                    <div class="flex justify-center gap-2">
+                        <a href="/teacher/${teacher.id}" class="w-full text-sm bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition-colors">Xem hồ sơ</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join(''); // Nối tất cả các chuỗi HTML lại với nhau
+
+    // 4. Chèn chuỗi HTML đã tạo vào container
+    teacherListContainer.innerHTML = teachersHTML;
+}
+// --- KẾT THÚC PHẦN CODE ĐỔ DỮ LIỆU GIÁO VIÊN ---
+// Chờ cho toàn bộ nội dung trang được tải xong
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // 1. Lấy phần tử container
+    const instructorsContainer = document.getElementById('instructors-container');
+    
+    // Xóa nội dung mặc định (nếu có) để đảm bảo container rỗng
+    instructorsContainer.innerHTML = ' ';
+
+    // 2. Lặp qua mảng teachers_data và tạo HTML
+    teachers_data.forEach(teacher => {
+        // 3. Tạo chuỗi HTML cho mỗi giáo viên
+        const teacherSlideHTML = `
+            <div class="swiper-slide text-center">
+                <img src="${teacher.avatar}" alt="${teacher.name}" class="w-40 h-40 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                <h4 class="font-bold text-lg">${teacher.name}</h4>
+                <p class="text-gray-500">${teacher.subject}</p>
+            </div>
+        `;
+        
+        // 4. Thêm HTML vừa tạo vào container
+        instructorsContainer.insertAdjacentHTML('beforeend', teacherSlideHTML);
+    });
+});
+// Chờ trang tải xong rồi mới chạy script
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // 1. Lấy phần tử container bằng ID mới
+    const teamContainer = document.getElementById('team-container');
+
+    // Kiểm tra xem container có tồn tại không để tránh lỗi
+    if (teamContainer) {
+        // Xóa nội dung HTML cũ bên trong
+        teamContainer.innerHTML = '';
+
+        // 2. Lặp qua mảng dữ liệu
+        teachers_data.forEach(member => {
+            // 3. Tạo chuỗi HTML khớp với cấu trúc mới
+            const memberHTML = `
+                <div class="team-member">
+                    <img src="${member.avatar}" alt="${member.name}" class="w-32 h-32 mx-auto rounded-full shadow-lg mb-4 object-cover">
+                    <h3 class="text-lg font-semibold text-gray-800">${member.name}</h3>
+                    <p class="text-gray-500">${member.subject}</p>
+                </div>
+            `;
+
+            // 4. Chèn HTML vừa tạo vào cuối container
+            teamContainer.insertAdjacentHTML('beforeend', memberHTML);
+        });
+    }
 });

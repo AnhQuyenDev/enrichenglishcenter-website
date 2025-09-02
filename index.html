@@ -6,7 +6,7 @@
     <title>Trang chủ - Trung Tâm Anh Ngữ Enrich</title>
     <meta name="description" content="Trung tâm Anh ngữ Enrich cung cấp các khoá học IELTS, TOEIC, Giao tiếp chuyên sâu. Đội ngũ giáo viên chuyên gia, lộ trình cá nhân hoá. Tìm hiểu ngay!">
     <link rel="icon" type="image/png" href="/images/logo.png">
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="/src/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -22,7 +22,7 @@
                 </a>
 
                 <div class="hidden xl:flex items-center space-x-8 font-semibold text-sm uppercase">
-                    <a href="/index" class="font-bold text-orange-500 border-b-4 border-orange-500 pb-2 transition-colors duration-300">TRANG CHỦ</a>
+                    <a href="/" class="font-bold text-orange-500 border-b-4 border-orange-500 pb-2 transition-colors duration-300">TRANG CHỦ</a>
                     <a href="/aboutus" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">VỀ Enrich</a>
                     <a href="/teachers" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">GIÁO VIÊN</a>
                     <a href="/courses" class="text-gray-700 hover:text-orange-500 pb-2 border-b-2 border-transparent transition-colors duration-300">KHOÁ HỌC</a>
@@ -40,7 +40,7 @@
         </div>
 
         <div id="mobile-menu" class="hidden xl:hidden bg-white border-t">
-            <a href="/index" class="block py-3 px-6 text-sm text-orange-500 bg-orange-50 font-semibold">TRANG CHỦ</a>
+            <a href="/" class="block py-3 px-6 text-sm text-orange-500 bg-orange-50 font-semibold">TRANG CHỦ</a>
             <a href="/aboutus" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">VỀ ENRICH</a>
             <a href="/teachers" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">GIÁO VIÊN</a>
             <a href="/courses" class="block py-3 px-6 text-sm text-gray-700 hover:bg-gray-50">KHOÁ HỌC</a>
@@ -65,7 +65,7 @@
 
             <div class="swiper-slide bg-cover bg-top" style="background-image: url('/images/teacher_home_banner.jpg');">
                 <div class="absolute inset-0 bg-gradient-to-t from-[#1E88E5CC] to-[#1E88E500]"></div> 
-                <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative top-32 z-10">
+                <div class="container mx-auto px-6 h-full flex flex-col justify-center items-center text-center relative z-10">
                     <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">Học hỏi từ những người giỏi nhất</h1>
                     <p class="text-lg md:text-xl mb-8 max-w-2xl">Đội ngũ giảng viên giàu kinh nghiệm của chúng em luôn tận tâm vì sự thành công của bạn.</p>
                     <a href="/teachers" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-600 transition duration-300">Gặp gỡ giảng viên</a>
@@ -305,45 +305,9 @@
 
             <div class="relative">
                 <div class="swiper instructorsSwiper">
-                    <div class="swiper-wrapper pb-16">
+                    <div class="swiper-wrapper pb-16" id="instructors-container">
                         
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="Instructor 1" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">Jessica Smith</h4>
-                            <p class="text-gray-500">giáo viên chính</p>
                         </div>
-
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Instructor 2" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">David Chen</h4>
-                            <p class="text-gray-500">Chuyên gia IELTS</p>
-                        </div>
-
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/women/14.jpg" alt="Instructor 3" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">Maria Garcia</h4>
-                            <p class="text-gray-500">Huấn luyện viên tiếng Anh thương mại</p>
-                        </div>
-
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Instructor 4" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">Robert Brown</h4>
-                            <p class="text-gray-500">Điều phối viên chương trình trẻ em</p>
-                        </div>
-                        
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/women/17.jpg" alt="Instructor 5" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">Linda Williams</h4>
-                            <p class="text-gray-500">Chuyên gia phát âm</p>
-                        </div>
-
-                        <div class="swiper-slide text-center">
-                            <img src="https://randomuser.me/api/portraits/men/18.jpg" alt="Instructor 6" class="w-32 h-32 rounded-full mx-auto mb-4 shadow-lg">
-                            <h4 class="font-bold text-lg">James Johnson</h4>
-                            <p class="text-gray-500">Cố vấn học thuật</p>
-                        </div>
-
-                    </div>
                     <div class="swiper-pagination"></div>
                 </div>
 
@@ -366,69 +330,8 @@
 
             <div class="relative">
                 <div class="swiper newsSwiper">
-                    <div class="swiper-wrapper pb-16">
-
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                <img src="https://images.unsplash.com/photo-1579226905180-636b76d96a82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="News 1" class="w-full h-56 object-cover">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
-                                        <span class="bg-orange-100 text-orange-600 font-semibold rounded-full px-3 py-1 text-xs">Sự kiện</span>
-                                        <time datetime="2025-08-26">Ngày 26 tháng 8, 2025</time>
-                                    </div>
-                                    <h3 class="text-xl font-bold mb-2">Workshop IELTS Writing Task 2 cùng chuyên gia David Chen</h3>
-                                    <p class="text-gray-600 flex-grow mb-4">Khám phá các chiến lược hiệu quả để chinh phục band điểm 7.0+ trong phần thi Viết học thuật...</p>
-                                    <a href="#" class="text-orange-500 font-semibold self-start hover:underline">Đọc thêm →</a>
-                                </div>
-                            </div>
+                    <div id="news-swiper-wrapper" class="swiper-wrapper pb-16">
                         </div>
-
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1484&q=80" alt="News 2" class="w-full h-56 object-cover">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
-                                        <span class="bg-blue-100 text-blue-600 font-semibold rounded-full px-3 py-1 text-xs">Mẹo học tập</span>
-                                        <time datetime="2025-08-22">Ngày 22 tháng 8, 2025</time>
-                                    </div>
-                                    <h3 class="text-xl font-bold mb-2">5 ứng dụng di động giúp bạn luyện nghe tiếng Anh mỗi ngày</h3>
-                                    <p class="text-gray-600 flex-grow mb-4">Tận dụng thời gian rảnh của bạn để cải thiện kỹ năng nghe một cách hiệu quả và thú vị...</p>
-                                    <a href="#" class="text-orange-500 font-semibold self-start hover:underline">Đọc thêm →</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                <img src="https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 3" class="w-full h-56 object-cover">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
-                                        <span class="bg-green-100 text-green-600 font-semibold rounded-full px-3 py-1 text-xs">Thông báo</span>
-                                        <time datetime="2025-08-20">Ngày 20 tháng 8, 2025</time>
-                                    </div>
-                                    <h3 class="text-xl font-bold mb-2">Enrich khai giảng các lớp Tiếng Anh thương mại tháng 9</h3>
-                                    <p class="text-gray-600 flex-grow mb-4">Đăng ký ngay để nhận ưu đãi lên đến 20% học phí cho các khoá học buổi tối...</p>
-                                    <a href="#" class="text-orange-500 font-semibold self-start hover:underline">Đọc thêm →</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-                                <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 4" class="w-full h-56 object-cover">
-                                <div class="p-6 flex flex-col flex-grow">
-                                    <div class="flex justify-between items-center text-sm text-gray-500 mb-2">
-                                        <span class="bg-purple-100 text-purple-600 font-semibold rounded-full px-3 py-1 text-xs">Cộng đồng</span>
-                                        <time datetime="2025-08-15">Ngày 15 tháng 8, 2025</time>
-                                    </div>
-                                    <h3 class="text-xl font-bold mb-2">Chuyến đi thiện nguyện tại làng trẻ em SOS Đà Nẵng</h3>
-                                    <p class="text-gray-600 flex-grow mb-4">Cùng nhìn lại những khoảnh khắc ý nghĩa và lan toả yêu thương của gia đình Enrich...</p>
-                                    <a href="#" class="text-orange-500 font-semibold self-start hover:underline">Đọc thêm →</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="swiper-pagination"></div>
                 </div>
 
@@ -452,7 +355,7 @@
                     <p class="text-gray-700 font-semibold">Tỉ lệ thành công</p>
                 </div>
                 <div>
-                    <h3 class="text-4xl font-bold text-custom-orange">2000+</h3>
+                    <h3 class="text-4xl font-bold text-custom-orange">1000+</h3>
                     <p class="text-gray-700 font-semibold">Học viên</p>
                 </div>
                 <div>
@@ -490,20 +393,22 @@
                         <div class="space-y-6 mb-8">
                             <div>
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">Chi nhánh</h3>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 1: Xã Phú Vinh, Phú Vang, Thừa Thiên Huế</p>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 2: Huyện Phú Vang, Thừa Thiên Huế</p>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 3: Phường Thuận An, Thừa Thiên Huế</p>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 4: Xã Vinh Lộc, Phú Vang, Thừa Thiên Huế</p>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 5: Phường Mỹ Thượng, Thừa Thiên Huế</p>
-                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 6: Xã Hưng Lộc, Thừa Thiên Huế</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 1: Thôn 2, Xã Phú Vinh, Thành phố Huế (Nha khoa Thanh Lịch đi tới 100m)</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 2: xã Phú Vang, Thành phố Huế (Bên cạnh Bánh canh Bé Ty)</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 3: Đường số 4, Thôn Cự Lại Trung, Phường Thuận An, Thành phố Huế</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 4: Thôn Phụng Chánh 2, Vinh Lộc, Thành phố Huế</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 5: Thôn Vinh Vệ, Phường Mỹ Thượng, Thành phố Huế (cách Nhà hàng Duyên Anh 200m)</p>
+                                <p class="text-gray-600"><i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>Cơ sở 6: Quốc lộ 1A, La Sơn, xã Hưng Lộc, Thành phố Huế (Đối diện cây xăng số 23)</p>
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">Email</h3>
-                                <a href="mailto:contact@enrichenglish.com" class="text-gray-600 hover:text-orange-500">contact@enrichenglish.com</a>
+                                <i class="fa-solid fa-envelope text-orange-400"></i>
+                                <a href="mailto:contact@enrichenglish.com" class="text-gray-600 hover:text-orange-500">contact@enrichenglishcenter.com</a>
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-gray-800 mb-2">Số điện thoại</h3>
-                                <a href="tel:+1234567890" class="text-gray-600 hover:text-orange-500">+1 234 567 890</a>
+                                <i class="fa-solid fa-phone text-orange-400"></i>
+                                <a href="tel:+1234567890" class="text-gray-600 hover:text-orange-500">0933 701 555</a>
                             </div>
                         </div>
                         <div>
@@ -558,8 +463,8 @@
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-12">
 
-                <div class="lg:col-span-4">
-                    <a href="#" class="flex items-center gap-3 mb-4">
+                <div class="lg:col-span-3">
+                    <a href="/" class="flex items-center mb-4">
                         <img src="/images/logo.png" alt="Enrich Logo" class="h-12">
                         <img src="/images/enrich_text.png" alt="Enrich Name" class="h-10 brightness-0 invert">
                     </a>
@@ -582,7 +487,7 @@
                 <div class="lg:col-span-2">
                     <h4 class="font-semibold text-white text-lg mb-4">Liên kết</h4>
                     <ul class="space-y-3 text-sm">
-                        <li><a href="/index" class="font-bold border-l-4 border-orange-400 text-orange-400 transition-colors px-2">Trang chủ</a></li>
+                        <li><a href="/" class="font-bold border-l-4 border-orange-400 text-orange-400 transition-colors px-2">Trang chủ</a></li>
                         <li class="hover:translate-x-2 transition-all duration-300"><a href="/aboutus" class="font-bold hover:text-orange-400">Về Enrich</a></li>
                         <li class="hover:translate-x-2 transition-all duration-300"><a href="/teachers" class="font-bold hover:text-orange-400">Giáo viên</a></li>
                         <li class="hover:translate-x-2 transition-all duration-300"><a href="/courses" class="font-bold hover:text-orange-400">Khóa học</a></li>
@@ -597,41 +502,45 @@
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-phone text-orange-400"></i>
-                            <a href="tel:0987654321" class="hover:text-orange-400 transition-colors">0987.654.321</a>
+                            <a href="tel:0987654321" class="hover:text-orange-400 transition-colors">0933 701 555</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-orange-400"></i>
+                            <a href="mailto:contact@enrichenglishcenter.com" class="hover:text-orange-400 transition-colors">contact@enrichenglishcenter.com</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-globe text-orange-400"></i>
-                            <a href="#" class="hover:text-orange-400 transition-colors">enrich.com</a>
+                            <a href="https://enrichenglishcenter.com" class="hover:text-orange-400 transition-colors">enrichenglishcenter.com</a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="lg:col-span-3">
+                <div class="lg:col-span-4">
                     <h4 class="font-semibold text-white text-lg mb-4">Các chi nhánh</h4>
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 1: Xã Phú Vinh, Phú Vang, Thừa Thiên Huế</span>
+                            <span>Cơ sở 1: Thôn 2, Xã Phú Vinh, Thành phố Huế (Nha khoa Thanh Lịch đi tới 100m)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 2: Huyện Phú Vang, Thừa Thiên Huế</span>
+                            <span>Cơ sở 2: xã Phú Vang, Thành phố Huế (Bên cạnh Bánh canh Bé Ty)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 3: Phường Thuận An, Thừa Thiên Huế</span>
+                            <span>Cơ sở 3: Đường số 4, Thôn Cự Lại Trung, Phường Thuận An, Thành phố Huế</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 4: Xã Vinh Lộc, Phú Vang, Thừa Thiên Huế</span>
+                            <span>Cơ sở 4: Thôn Phụng Chánh 2, Vinh Lộc, Thành phố Huế</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 5: Phường Mỹ Thượng, Thừa Thiên Huế</span>
+                            <span>Cơ sở 5: Thôn Vinh Vệ, Phường Mỹ Thượng, Thành phố Huế (cách Nhà hàng Duyên Anh 200m)</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-location-dot text-orange-400 mt-1"></i>
-                            <span>Cơ sở 6: Xã Hưng Lộc, Thừa Thiên Huế</span>
+                            <span>Cơ sở 6: Quốc lộ 1A, La Sơn, xã Hưng Lộc, Thành phố Huế (Đối diện cây xăng số 23)</span>
                         </li>
                     </ul>
                 </div>
@@ -642,6 +551,6 @@
             </div>
         </div>
     </footer>
-    <script type="module" src="src/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
