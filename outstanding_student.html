@@ -52,145 +52,177 @@
         </div>
     </header>
 
-    <main class="w-full">
+    <main class="w-full overflow-x-hidden bg-gradient-to-br from-emerald-100 via-white to-emerald-200">
         <section class="relative h-[70vh] bg-cover bg-center" style="background-image: url('/images/outstanding_banner.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#43A047CC] to-[#43A04700]"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
             <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-down" data-aos-delay="200">Vinh danh những ngôi sao sáng</h1>
                 <p class="text-lg md:text-xl mb-8 max-w-2xl" data-aos="fade-down" data-aos-delay="400">Cùng Enrich nhìn lại hành trình và thành tựu đầy cảm hứng của các học viên xuất sắc tại Enrich.</p>
             </div>
         </section>
 
-        <div class="container mx-auto px-6 py-16 sm:py-24">
-            
-            <section>
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-orange-500 uppercase" data-aos="fade-down" data-aos-delay="100">Học viên Nổi bật</h2>
-                    <p class="mt-3 text-gray-600 max-w-2xl mx-auto" data-aos="fade-down" data-aos-delay="400">Những cá nhân đã thể hiện sự nỗ lực vượt bậc và đạt được những thành tích đáng nể.</p>
+        <div class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-orange-500 text-center mb-12 uppercase" data-aos="fade-up"><span class="text-emerald-500">Thành Tích</span> Học Viên Nổi Bật</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                
+                <div class="relative w-full mx-auto group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                    <div class="relative bg-white border-2 border-emerald-100 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-32 relative flex items-center justify-center">
+                            <img src="/images/thanhtich1.png" alt="Nguyễn Viết Huy Hoàng" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg absolute -bottom-14 transform group-hover:scale-105 transition-transform duration-300 z-10">
+                        </div>
+                        <div class="p-5 pt-16 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold text-slate-900 leading-tight">Nguyễn Viết Huy Hoàng</h3>
+                            <p class="text-sm font-semibold text-emerald-600 mt-1 mb-4">Học sinh lớp 8 - Trường THCS Vinh Thanh</p>
+                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-left px-4 flex-grow">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Nhì khối 8 toàn Tỉnh Cuộc thi Olympic Tiếng Anh trên Internet</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Nhất Cuộc thi học sinh giỏi cấp huyện năm 2023 - 2024</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Ba Cuộc thi học sinh giỏi cấp Thành phố năm 2024 - 2025</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 flex-shrink-0">
+                                <a href="#" class="open-modal-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-lg shadow-md shadow-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/60 transform hover:-translate-y-1 transition-all duration-300"
+                                            data-student="huy-hoang">
+                                    <span>Tìm hiểu thêm</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" data-aos="fade-up" data-aos-delay="600">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <img src="/images/thanhtich1.png" alt="Thành tích 1" class="w-full h-56 object-cover">
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-900">Nguyễn Viết Huy Hoàng</h3>
-                            <p class="text-sm font-semibold text-orange-500 mb-2">Học sinh lớp 8 - Trường THCS Vinh Thanh</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-left">
-                                <li>Giải Nhì khối 8 toàn Tỉnh Cuộc thi Olympic Tiếng Anh trên Internet</li>
-                                <li>Giải Nhất Cuộc thi học sinh giỏi cấp huyện năm 2024 - 2025</li>
-                                <li>Giải Ba Cuộc thi học sinh giỏi cấp Thành phố năm 2024 - 2025</li>
-                            </ul>
+                <div class="relative w-full mx-auto group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                    <div class="relative bg-white border-2 border-emerald-100 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-32 relative flex items-center justify-center">
+                            <img src="/images/thanhtich1.png" alt="Nguyễn Xuân Đức" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg absolute -bottom-14 transform group-hover:scale-105 transition-transform duration-300 z-10">
                         </div>
-                    </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <img src="/images/thanhtich1.png" alt="Thành tích 2" class="w-full h-56 object-cover">
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-900">Nguyễn Xuân Đức</h3>
-                            <p class="text-sm font-semibold text-orange-500 mb-2">Học sinh lớp 9 - Trường THCS Vinh Thanh</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-left">
-                                <li>Giải Nhất khối 8 toàn Tỉnh Cuộc thi Olympic Tiếng Anh trên Internet</li>
-                                <li>Giải Khuyến Khích khối 9 cấp Quốc Gia Cuộc thi Olympic Tiếng Anh trên Internet</li>
+                        <div class="p-5 pt-16 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold text-slate-900 leading-tight">Nguyễn Xuân Đức</h3>
+                            <p class="text-sm font-semibold text-emerald-600 mt-1 mb-4">Học sinh lớp 9 - Trường THCS Vinh Thanh</p>
+                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-left px-4 flex-grow">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Nhất khối 8 toàn Tỉnh Cuộc thi Olympic Tiếng Anh trên Internet</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Khuyến Khích khối 9 cấp Quốc Gia Cuộc thi Olympic Tiếng Anh trên Internet</span>
+                                </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <img src="/images/thanhtich1.png" alt="Thành tích 3" class="w-full h-56 object-cover">
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-900">Lê Dương Hữu Nghĩa</h3>
-                            <p class="text-sm font-semibold text-orange-500 mb-2">Học sinh lớp 4 - Trường Tiểu học Vinh Thanh 2</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-left">
-                                <li>Huy Chương Vàng toàn cấp Quốc Gia Cuộc thi Olympic Tiếng Anh trên Internet</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <img src="/images/thanhtich1.png" alt="Thành tích 4" class="w-full h-56 object-cover">
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-900">Đỗ Nữ Lan Anh</h3>
-                            <p class="text-sm font-semibold text-orange-500 mb-2">Học sinh Trường THCS Vinh Hà</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-left">
-                                <li>Giải Nhất Cuộc thi hùng biện Tiếng Anh bậc THCS</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <img src="/images/thanhtich1.png" alt="Thành tích 5" class="w-full h-56 object-cover">
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-gray-900">Phan Công Bảo Nguyên</h3>
-                            <p class="text-sm font-semibold text-orange-500 mb-2">Học sinh lớp 11 - Trường THPT Vinh Xuân</p>
-                            <ul class="list-disc list-inside text-gray-700 space-y-2 text-left">
-                                <li>Huy Chương Đồng Cuộc thi Olympic Tiếng Anh trên Internet khối 11</li>
-                            </ul>
+                            <div class="mt-6 flex-shrink-0">
+                                <a href="#" class="open-modal-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-lg shadow-md shadow-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/60 transform hover:-translate-y-1 transition-all duration-300"
+                                            data-student="xuan-duc">
+                                    <span>Tìm hiểu thêm</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <div class="relative w-full mx-auto group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                    <div class="relative bg-white border-2 border-emerald-100 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-32 relative flex items-center justify-center">
+                            <img src="/images/thanhtich1.png" alt="Lê Dương Hữu Nghĩa" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg absolute -bottom-14 transform group-hover:scale-105 transition-transform duration-300 z-10">
+                        </div>
+                        <div class="p-5 pt-16 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold text-slate-900 leading-tight">Lê Dương Hữu Nghĩa</h3>
+                            <p class="text-sm font-semibold text-emerald-600 mt-1 mb-4">Học sinh lớp 4 - Trường Tiểu học Vinh Thanh 2</p>
+                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-left px-4 flex-grow">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Huy Chương Vàng toàn cấp Quốc Gia Cuộc thi Olympic Tiếng Anh trên Internet</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 flex-shrink-0">
+                                <a href="#" class="open-modal-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-lg shadow-md shadow-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/60 transform hover:-translate-y-1 transition-all duration-300"
+                                            data-student="huu-nghia">
+                                    <span>Tìm hiểu thêm</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative w-full mx-auto group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                    <div class="relative bg-white border-2 border-emerald-100 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-32 relative flex items-center justify-center">
+                            <img src="/images/thanhtich1.png" alt="Đỗ Nữ Lan Anh" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg absolute -bottom-14 transform group-hover:scale-105 transition-transform duration-300 z-10">
+                        </div>
+                        <div class="p-5 pt-16 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold text-slate-900 leading-tight">Đỗ Nữ Lan Anh</h3>
+                            <p class="text-sm font-semibold text-emerald-600 mt-1 mb-4">Học sinh Trường THCS Vinh Hà</p>
+                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-left px-4 flex-grow">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Giải Nhất Cuộc thi hùng biện Tiếng Anh bậc THCS</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 flex-shrink-0">
+                                <a href="#" class="open-modal-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-lg shadow-md shadow-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/60 transform hover:-translate-y-1 transition-all duration-300"
+                                            data-student="lan-anh">
+                                    <span>Tìm hiểu thêm</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <section>
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-orange-500 uppercase" data-aos="fade-down" data-aos-delay="200">Cảm nhận của Phụ huynh</h2>
-                    <p class="mt-3 text-gray-600 max-w-2xl mx-auto" data-aos="fade-down" data-aos-delay="400">Lắng nghe những chia sẻ chân thực từ những bậc phụ huynh đã cùng gắn bó với Enrich</p>
+                <div class="relative w-full mx-auto group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur-lg opacity-0 group-hover:opacity-50 transition duration-300"></div>
+                    <div class="relative bg-white border-2 border-emerald-100 rounded-xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col h-full">
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-32 relative flex items-center justify-center">
+                            <img src="/images/thanhtich1.png" alt="Phan Công Bảo Nguyên" class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg absolute -bottom-14 transform group-hover:scale-105 transition-transform duration-300 z-10">
+                        </div>
+                        <div class="p-5 pt-16 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold text-slate-900 leading-tight">Phan Công Bảo Nguyên</h3>
+                            <p class="text-sm font-semibold text-emerald-600 mt-1 mb-4">Học sinh lớp 11 - Trường THPT Vinh Xuân</p>
+                            <ul class="list-disc list-inside text-slate-700 space-y-2 text-left px-4 flex-grow">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                    <span>Huy Chương Đồng Cuộc thi Olympic Tiếng Anh trên Internet khối 11</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 flex-shrink-0">
+                                <a href="#" class="open-modal-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3 px-6 rounded-lg shadow-md shadow-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/60 transform hover:-translate-y-1 transition-all duration-300"
+                                            data-student="bao-nguyen">
+                                    <span>Tìm hiểu thêm</span>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div id="certificate-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4 transition-opacity duration-300 ease-out">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-5xl lg:max-w-6xl max-h-[95vh] flex flex-col transform scale-95 opacity-0 transition-all duration-300 ease-out">
+                
+                <div class="flex justify-between items-center p-5 border-b border-gray-200 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-xl">
+                    <h3 class="text-2xl font-bold" id="modal-student-title">Bằng khen & Thành tích</h3>
+                    <button id="close-modal-btn" class="text-white hover:text-gray-200 transition-colors focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <div id="gallery-container" class="p-6 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 flex-grow">
+                    </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-white text-center rounded-lg shadow-lg overflow-hidden">
-                        <div class="relative group">
-                            <img src="/images/comment.png" alt="Lời nhận xét" class="w-full h-64 object-cover">
-                            <div class="absolute inset-0 bg-orange-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-quote-left text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="200">Nhà May Fati</h3>
-                            <p class="text-sm text-gray-600 mt-2 italic" data-aos="fade-down" data-aos-delay="400">"Điều khiến tôi hài lòng nhất là sự thay đổi rõ rệt của con. Từ một đứa trẻ nhút nhát, bé giờ đã có thể tự tin giới thiệu bản thân bằng tiếng Anh và rất hào hứng mỗi khi đến lớp. Chương trình học thực sự hiệu quả."</p>
-                        </div>
-                    </div>
-                    <div class="bg-white text-center rounded-lg shadow-lg overflow-hidden">
-                        <div class="relative group">
-                            <img src="/images/comment.png" alt="Lời nhận xét" class="w-full h-64 object-cover">
-                            <div class="absolute inset-0 bg-orange-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-quote-left text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="200">Mẹ của bạn Nguyễn Viết Huy Hoàng</h3>
-                            <p class="text-sm text-gray-600 mt-2 italic" data-aos="fade-down" data-aos-delay="400">"Tôi đánh giá cao cách trung tâm thường xuyên cập nhật tình hình học tập của con. Mọi thông báo về lịch học hay nhận xét của giáo viên đều được gửi đến phụ huynh rất kịp thời và chi tiết."</p>
-                        </div>
-                    </div>       
-                    <div class="bg-white text-center rounded-lg shadow-lg overflow-hidden">
-                        <div class="relative group">
-                            <img src="/images/comment.png" alt="Lời nhận xét" class="w-full h-64 object-cover">
-                            <div class="absolute inset-0 bg-orange-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-quote-left text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="200">Bố của bạn Lê Xuân Đức</h3>
-                            <p class="text-sm text-gray-600 mt-2 italic" data-aos="fade-down" data-aos-delay="400">"Con không chỉ học ngôn ngữ mà còn học được cách tư duy cởi mở hơn. Nhờ môi trường tiếp xúc với giáo viên bản ngữ, con đã dạn dĩ và yêu thích việc khám phá những điều mới lạ."</p>
-                        </div>
-                    </div>
-                    <div class="bg-white text-center rounded-lg shadow-lg overflow-hidden">
-                        <div class="relative group">
-                            <img src="/images/comment.png" alt="Lời nhận xét" class="w-full h-64 object-cover">
-                            <div class="absolute inset-0 bg-orange-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-quote-left text-white text-5xl"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900" data-aos="fade-down" data-aos-delay="200">Mẹ của bạn Đỗ Nữ Lan Anh</h3>
-                            <p class="text-sm text-gray-600 mt-2 italic" data-aos="fade-down" data-aos-delay="400">"Sau khi cho con theo học được một thời gian, tôi hoàn toàn tin tưởng vào chất lượng của Enrich. Tôi chắc chắn sẽ giới thiệu trung tâm cho bạn bè và người thân của mình."</p>
-                        </div>
-                    </div>
                 </div>
-            </section>
-            
-            <section class="mt-24 bg-orange-50/70 border border-orange-200 text-center rounded-xl p-8 md:p-12">
-                <h2 class="text-3xl font-bold text-gray-800">Biết một học viên xuất sắc?</h2>
-                <p class="max-w-xl mx-auto text-gray-600 mt-3 mb-6">Bạn có biết một học viên đã thể hiện những thành tích xuất sắc trong học tập, cộng đồng hoặc các dự án cá nhân? Hãy đề cử họ để được vinh danh!</p>
-                <a href="/contact" class="inline-block bg-orange-500 text-white font-bold px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors shadow-md hover:shadow-lg">
-                    Liên hệ ngay
-                </a>
-            </section>
         </div>
     </main>
     
@@ -286,78 +318,7 @@
             </div>
         </div>
     </footer>
-    <div data-dial-init class="fixed bottom-6 right-4 md:right-6 z-[100] group">
-    <!-- Menu con -->
-        <div id="speed-dial-menu-default" 
-            class="flex flex-col items-center hidden mb-4 space-y-3">
 
-            <!-- Messenger -->
-            <a href="https://www.facebook.com/bichhao.nguyen.520?locale=vi_VN" 
-            target="_blank" 
-            data-tooltip-target="tooltip-messenger" 
-            data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-blue-600 rounded-full shadow-md 
-                    hover:bg-blue-700 transition-transform hover:scale-110">
-                <i class="fa-brands fa-facebook-messenger text-lg sm:text-xl"></i>
-                <span class="sr-only">Messenger</span>
-            </a>
-            <div id="tooltip-messenger" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Facebook Messenger
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Email -->
-            <a href="mailto:contact@enrichenglishcenter.com" 
-            data-tooltip-target="tooltip-email" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-yellow-500 rounded-full shadow-md 
-                    hover:bg-yellow-600 transition-transform hover:scale-110">
-                <i class="fas fa-envelope text-lg sm:text-xl"></i>
-                <span class="sr-only">Email</span>
-            </a>
-            <div id="tooltip-email" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Email: contact@enrichenglishcenter.com
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Phone -->
-            <a href="tel:0933701555" 
-            data-tooltip-target="tooltip-phone" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-green-500 rounded-full shadow-md 
-                    hover:bg-green-600 transition-transform hover:scale-110">
-                <i class="fas fa-phone-alt text-lg sm:text-xl"></i>
-                <span class="sr-only">Phone</span>
-            </a>
-            <div id="tooltip-phone" role="tooltip" 
-                class="absolute z-50 invisible inline-block min-w-[220px] sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Số điện thoại: 0973 701 555
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-        </div>
-        
-        <!-- Nút chính -->
-        <button type="button" 
-                data-dial-toggle="speed-dial-menu-default" 
-                aria-controls="speed-dial-menu-default" 
-                aria-expanded="false"
-                class="flex items-center justify-center text-white bg-red-600 rounded-full 
-                    w-12 h-12 sm:w-14 sm:h-14 shadow-lg
-                    hover:bg-red-700 transition-transform hover:scale-110 
-                    focus:ring-4 focus:ring-red-300 focus:outline-none">
-            <i class="fas fa-comment-dots text-xl sm:text-2xl"></i>
-            <span class="sr-only">Mở menu liên hệ</span>
-        </button>
-    </div>
     <script type="module" src="/src/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

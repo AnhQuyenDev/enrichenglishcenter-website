@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 /* Đảm bảo html và body không gây cản trở cho fixed positioning */
-body {
+html, body {
     font-family: 'Be Vietnam Pro', sans-serif;
-    overflow-x: hidden; /* Ngăn chặn scroll ngang không mong muốn */
+    /* overflow-x: hidden; */
 }
 
 /* Thêm một số style tùy chỉnh nếu cần */

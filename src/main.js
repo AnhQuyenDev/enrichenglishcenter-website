@@ -6,6 +6,7 @@ import List from 'list.js';
 import { coursesData } from './course_data.js';
 import { teachers_data } from './teacher_data.js';
 import { newsData } from './news_data.js';
+import { students } from './achivement_data.js';
 // =================================================================
 // PHẦN 2: CODE CHẠY TRÊN TẤT CẢ CÁC TRANG (MENU)
 // =================================================================
@@ -330,14 +331,14 @@ function assignCategories(course) {
  */
 function createCourseCardHTML(course) {
     return `
-        <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+        <div class="bg-white border-2 border-blue-300 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
             <img src="./images/course4.jpg" alt="${course.title}" class="w-full h-48 object-cover">
             <div class="p-6 flex flex-col flex-grow">
                 <h3 class="title font-bold text-xl mb-2 text-gray-800">${course.title}</h3> 
                 <p class="text-gray-600 text-sm mb-4 flex-grow">${course.shortDescription}</p>
                 <div class="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-100 mt-auto">
                     <span><i class="far fa-clock mr-2"></i>${course.duration}</span>
-                    <a href="/course/${course.id}" class="font-semibold text-orange-500 hover:text-orange-600">Xem chi tiết</a>
+                    <a href="/course/${course.id}" class="font-semibold text-blue-500 hover:text-blue-600">Xem chi tiết</a>
                 </div>
             </div>
         </div>
@@ -726,36 +727,78 @@ if (newsSwiperWrapper) {
 
 // --- BẮT ĐẦU PHẦN CODE ĐỔ DỮ LIỆU GIÁO VIÊN ---
 
-// 1. Lấy element container
-const teacherListContainer = document.getElementById('teacher-list-container');
+// Giả sử bạn có một mảng teachers_data như sau:
+// const teachers_data = [ ... ]; // Dữ liệu giáo viên của bạn
 
-// 2. Kiểm tra xem container có tồn tại trên trang không
-if (teacherListContainer) {
+// Lấy các element container
+const founderContainer = document.getElementById('founder-container');
+const foreignTeachersContainer = document.getElementById('foreign-teachers-container');
+const vietnameseTeachersContainer = document.getElementById('vietnamese-teachers-container');
+
+// Kiểm tra xem các container có tồn tại không
+if (founderContainer && foreignTeachersContainer && vietnameseTeachersContainer) {
     
-    // 3. Dùng hàm map để tạo chuỗi HTML cho mỗi giáo viên
-    const teachersHTML = teachers_data.map(teacher => {
-        // Cắt ngắn phần bio để hiển thị trên card
-        const shortBio = teacher.bio.length > 70 ? teacher.bio.substring(0, 70) + '...' : teacher.bio;
+    // --- 1. PHÂN LOẠI GIÁO VIÊN ---
+    const founder = teachers_data.find(t => t.id === 1);
+    const foreignTeachers = teachers_data.filter(t => typeof t.type === 'string' && t.type.startsWith('NF'));
+    const vietnameseTeachers = teachers_data.filter(t => typeof t.type === 'string' && t.type.startsWith('VN'));
 
+    // --- MẪU HTML CHO THẺ GIÁO VIÊN TIÊU CHUẨN (HIỆN ĐẠI) ---
+    const createTeacherCard = (teacher) => {
+        const shortBio = teacher.bio.length > 70 ? teacher.bio.substring(0, 70) + '...' : teacher.bio;
         return `
-            <div class="bg-white border border-gray-200 rounded-lg shadow-sm text-center group overflow-hidden">
-                <a href="/teacher/${teacher.id}" class="block">
-                    <img src="${teacher.avatar}" alt="${teacher.name}" class="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300">
-                </a>
-                <div class="p-4">
-                    <h4 class="font-bold text-lg text-gray-800">${teacher.name}</h4>
-                    <p class="text-sm text-gray-500 mb-2">${teacher.subject}</p>
-                    <p class="text-gray-600 text-sm mb-4 h-12">${shortBio}</p>
-                    <div class="flex justify-center gap-2">
-                        <a href="/teacher/${teacher.id}" class="w-full text-sm bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 transition-colors">Xem hồ sơ</a>
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-in-out text-center overflow-hidden">
+                <div class="bg-slate-900 h-28 rounded-t-xl relative"> <a href="/teacher/${teacher.id}" class="block">
+                        <img src="${teacher.avatar}" alt="${teacher.name}" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mx-auto absolute inset-x-0 -bottom-16 transform hover:scale-105 transition-transform duration-300 z-10"> </a>
+                </div>
+                <div class="p-6 pt-20"> <h4 class="text-xl font-bold text-slate-900">${teacher.name}</h4>
+                    <p class="text-sm text-orange-500 font-semibold mb-3">${teacher.subject}</p>
+                    <p class="text-slate-600 text-sm mb-4 h-12">${shortBio}</p>
+                    <a href="/teacher/${teacher.id}" class="inline-block w-full bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors">Xem hồ sơ</a>
+                </div>
+            </div>
+        `;
+    };
+
+    // --- MẪU HTML CHO THẺ FOUNDER (NỔI BẬT) ---
+    if (founder) {
+        const founderHTML = `
+            <div class="relative w-full max-w-5xl group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                
+                <div class="relative bg-slate-900/80 backdrop-blur-sm ring-1 ring-white/10 rounded-2xl overflow-hidden md:flex">
+                    
+                    <div class="md:w-5/12 p-4">
+                        <img src="${founder.avatar}" alt="${founder.name}" class="relative rounded-xl shadow-2xl shadow-black/60 w-full h-full object-cover">
+                    </div>
+
+                    <div class="md:w-7/12 p-8 flex flex-col justify-center">
+                        <span class="inline-block bg-white/10 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider w-fit">Nhà Sáng Lập & Giám Đốc</span>
+                        
+                        <h3 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-white mt-4 py-4 uppercase leading-tight">${founder.name}</h3>                        
+                        <p class="text-slate-300 mt-4 text-lg leading-relaxed">${founder.bio}</p>
+                        
+                        <div class="mt-8">
+                            <a href="/teacher/${founder.id}" class="inline-flex items-center gap-2 bg-white text-slate-900 font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                                <span>Tìm hiểu thêm</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         `;
-    }).join(''); // Nối tất cả các chuỗi HTML lại với nhau
+        founderContainer.innerHTML = founderHTML;
+    }
 
-    // 4. Chèn chuỗi HTML đã tạo vào container
-    teacherListContainer.innerHTML = teachersHTML;
+    // --- 2. RENDER RA GIAO DIỆN ---
+    // Render giáo viên nước ngoài
+    foreignTeachersContainer.innerHTML = foreignTeachers.map(createTeacherCard).join('');
+
+    // Render giáo viên Việt Nam
+    vietnameseTeachersContainer.innerHTML = vietnameseTeachers.map(createTeacherCard).join('');
 }
 // --- KẾT THÚC PHẦN CODE ĐỔ DỮ LIỆU GIÁO VIÊN ---
 // Chờ cho toàn bộ nội dung trang được tải xong
@@ -852,5 +895,110 @@ document.addEventListener("DOMContentLoaded", () => {
     // Bắt đầu quan sát tất cả các thẻ có class 'counter'
     counters.forEach(counter => {
         observer.observe(counter);
+    });
+});
+
+ // Chạy hàm initLandbot ngay khi cấu trúc trang đã sẵn sàng
+document.addEventListener('DOMContentLoaded', initLandbot, { once: true });
+
+var myLandbot;
+function initLandbot() {
+    if (!myLandbot) {
+    var s = document.createElement('script');
+    s.type = "module";
+    s.async = true;
+    s.addEventListener('load', function() {
+        myLandbot = new Landbot.Livechat({
+        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3119679-X7X2NJWC6PRKP0RK/index.json',
+        });
+    });
+    s.src = 'https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+    }
+}
+// Giả sử bạn đã import biến students từ data.js
+// import { students } from './data.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Lấy các phần tử modal (giữ nguyên)
+    const modal = document.getElementById('certificate-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const galleryContainer = document.getElementById('gallery-container');
+    const openModalButtons = document.querySelectorAll('.open-modal-btn');
+    const modalTitle = document.querySelector('#certificate-modal h3');
+
+    // Dòng code lỗi đã được XÓA ở đây
+
+    // Hàm để mở modal, bây giờ sẽ nhận object student làm tham số
+    function openModal(student) {
+        galleryContainer.innerHTML = '';
+
+        if (!student || !student.achievements || student.achievements.length === 0) {
+            galleryContainer.innerHTML = '<p class="text-center text-slate-500">Không có thành tích nào để hiển thị.</p>';
+            modalTitle.textContent = 'Thông báo'; // Cập nhật tiêu đề khi không có data
+        } else {
+            // Cập nhật tên học viên trên tiêu đề modal
+            modalTitle.textContent = `Bằng khen & Thành tích của ${student.name}`;
+
+            // Lặp qua mảng thành tích của học viên được tìm thấy
+            student.achievements.forEach(cert => {
+                const imageWrapper = document.createElement('div');
+                imageWrapper.className = 'w-full h-auto bg-gray-100 rounded-lg overflow-hidden shadow-md';
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = cert.src;
+                imgElement.alt = cert.alt;
+                imgElement.className = 'w-full h-full object-cover';
+                
+                const captionElement = document.createElement('p');
+                captionElement.textContent = cert.alt;
+                captionElement.className = 'text-center text-sm p-2 text-slate-700';
+
+                imageWrapper.appendChild(imgElement);
+                imageWrapper.appendChild(captionElement);
+                galleryContainer.appendChild(imageWrapper);
+            });
+        }
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            const modalContent = modal.querySelector('div'); // Chọn div nội dung bên trong
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+        }, 10);
+    }
+
+    // Hàm đóng modal (giữ nguyên)
+    function closeModal() {
+        const modalContent = modal.querySelector('div');
+        modalContent.classList.remove('scale-100', 'opacity-100');
+        modalContent.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    // Logic tìm kiếm đã chính xác
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const studentId = button.dataset.student;
+            
+            // Dùng .find() để tìm object học viên có id trùng khớp
+            const studentData = students.find(student => student.id === studentId);
+            
+            // Gọi hàm openModal và truyền cả object của học viên đó vào
+            openModal(studentData);
+        });
+    });
+
+    // Các sự kiện đóng modal (giữ nguyên)
+    closeModalBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
     });
 });

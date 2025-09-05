@@ -52,7 +52,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="overflow-x-hidden bg-cover" style="background-image: url('/images/bg-contact.webp');">
         <section class="py-16 lg:py-24">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -62,29 +62,67 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
                     
-                    <div class="lg:col-span-3 p-8 border border-gray-200 rounded-lg" data-aos="fade-right" data-aos-duration="700">
-                        <h2 class="text-2xl font-bold mb-2">Gửi cho Enrich một tin nhắn</h2>
-                        <p class="text-gray-500 mb-6">Vui lòng điền vào mẫu dưới đây và Enrich sẽ phản hồi bạn sớm.</p>
-                        <form action="https://formspree.io/f/xgvlzkoq" method="POST" class="space-y-6">
+                    <div class="lg:col-span-3 bg-white p-8 sm:p-10 rounded-2xl shadow-2xl border-t-4 border-orange-500" data-aos="fade-right" data-aos-duration="700">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-2">Gửi cho Enrich một tin nhắn</h2>
+                        <p class="text-slate-600 mb-8">Vui lòng điền vào mẫu dưới đây và Enrich sẽ phản hồi bạn sớm.</p>
+
+                        <form action="/send-email.php" method="POST" class="space-y-6">
+                            
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Tên</label>
-                                <input type="text" id="name" name="name" placeholder="Họ và tên của bạn" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm p-3">
+                                <label for="name" class="block text-sm font-medium text-slate-800">Tên của bạn</label>
+                                <div class="mt-1 relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.41-1.412A6.995 6.995 0 0010 11.5a6.995 6.995 0 00-6.535 2.993z" />
+                                        </svg>
+                                    </span>
+                                    <input type="text" id="name" name="name" placeholder="Họ và tên" required class="block w-full rounded-md border-gray-200 bg-gray-50 py-3 pl-10 pr-3 text-slate-900 shadow-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50 sm:text-sm">
+                                </div>
                             </div>
+
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                <input type="email" id="email" name="email" placeholder="you@example.com" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm p-3">
+                                <label for="email" class="block text-sm font-medium text-slate-800">Email</label>
+                                <div class="mt-1 relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
+                                            <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
+                                        </svg>
+                                    </span>
+                                    <input type="email" id="email" name="email" placeholder="you@example.com" required class="block w-full rounded-md border-gray-200 bg-gray-50 py-3 pl-10 pr-3 text-slate-900 shadow-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50 sm:text-sm">
+                                </div>
                             </div>
+
                             <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700">Số điện thoại (Tùy chọn)</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm p-3">
+                                <label for="phone" class="block text-sm font-medium text-slate-800">Số điện thoại</label>
+                                <div class="mt-1 relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-gray-400">
+                                            <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <input type="tel" id="phone" name="phone" placeholder="Số điện thoại của bạn" required class="block w-full rounded-md border-gray-200 bg-gray-50 py-3 pl-10 pr-3 text-slate-900 shadow-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50 sm:text-sm">
+                                </div>
                             </div>
+
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Tin nhắn của bạn</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Hãy cho Enrich biết bạn cần gì..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-orange-500 focus:border-orange-500 sm:text-sm p-3"></textarea>
+                                <label for="message" class="block text-sm font-medium text-slate-800">Tin nhắn của bạn</label>
+                                <div class="mt-1 relative">
+                                    <span class="absolute top-3 left-0 flex items-center pl-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-gray-400">
+                                            <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97ZM6.75 8.25a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H7.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <textarea id="message" name="message" rows="4" placeholder="Hãy cho Enrich biết bạn cần gì..." required class="block w-full rounded-md border-gray-200 bg-gray-50 py-3 pl-10 pr-3 text-slate-900 shadow-sm focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/50 sm:text-sm"></textarea>
+                                </div>
                             </div>
+                            
                             <div>
-                                <button type="submit" class="w-full bg-orange-500 text-white font-bold py-3 px-4 rounded-md hover:bg-orange-600 transition duration-300">
+                                <button type="submit" class="flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-orange-500 to-red-500 py-3 px-4 font-semibold text-white shadow-lg shadow-orange-500/30 transition-all duration-300 hover:from-orange-600 hover:to-red-600 hover:shadow-xl hover:shadow-orange-500/50">
                                     Gửi tin nhắn
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                                        <path d="M3.478 2.404a.75.75 0 0 0-.926.941l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.404Z" />
+                                    </svg>
                                 </button>
                             </div>
                         </form>
@@ -140,11 +178,11 @@
             </div>
         </section>
         <div class="my-12 container mx-auto px-6">
-            <h3 class="flex items-center justify-center text-3xl font-bold text-orange-500 uppercase mb-6 text-center md:text-left" data-aos="fade-up" data-aos-duration="700">Tìm Enrich trên bản đồ</h3>
-            
-            <div class="relative flex items-center justify-center rounded-xl overflow-hidden shadow-2xl h-[550px]" data-aos="zoom-in" data-aos-duration="800">    
-                <iframe 
-                    src="https://www.google.com/maps/d/u/1/embed?mid=1KGYcEqDUusquJQsOjPg_CXbstKv1yNc&ehbc=2E312F" 
+            <h3 class="flex items-center justify-center text-3xl font-bold text-orange-500 uppercase mb-6 text-center md:text-left" data-aos="fade-up" data-aos-duration="700"><span class="text-blue-800 mr-2">Tìm Enrich</span> trên bản đồ</h3>
+
+            <div class="relative flex items-center justify-center rounded-xl overflow-hidden shadow-2xl h-[550px]" data-aos="zoom-in" data-aos-duration="800">
+                <iframe
+                    src="https://www.google.com/maps/d/u/1/embed?mid=1KGYcEqDUusquJQsOjPg_CXbstKv1yNc&ehbc=2E312F"
                     class="absolute inset-0 -top-[60px] w-full h-full"
                     style="border:0;" 
                     allowfullscreen="" 
@@ -168,13 +206,7 @@
                     </p>
                     <div class="flex items-center space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-facebook text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-tiktok text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-instagram text-2xl"></i>
+                            <i class="fa-brands fa-facebook text-4xl"></i>
                         </a>
                     </div>
                 </div>
@@ -246,78 +278,7 @@
             </div>
         </div>
     </footer>
-    <div data-dial-init class="fixed bottom-6 right-4 md:right-6 z-[100] group">
-    <!-- Menu con -->
-        <div id="speed-dial-menu-default" 
-            class="flex flex-col items-center hidden mb-4 space-y-3">
 
-            <!-- Messenger -->
-            <a href="https://www.facebook.com/bichhao.nguyen.520?locale=vi_VN" 
-            target="_blank" 
-            data-tooltip-target="tooltip-messenger" 
-            data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-blue-600 rounded-full shadow-md 
-                    hover:bg-blue-700 transition-transform hover:scale-110">
-                <i class="fa-brands fa-facebook-messenger text-lg sm:text-xl"></i>
-                <span class="sr-only">Messenger</span>
-            </a>
-            <div id="tooltip-messenger" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Facebook Messenger
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Email -->
-            <a href="mailto:contact@enrichenglishcenter.com" 
-            data-tooltip-target="tooltip-email" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-yellow-500 rounded-full shadow-md 
-                    hover:bg-yellow-600 transition-transform hover:scale-110">
-                <i class="fas fa-envelope text-lg sm:text-xl"></i>
-                <span class="sr-only">Email</span>
-            </a>
-            <div id="tooltip-email" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Email: contact@enrichenglishcenter.com
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Phone -->
-            <a href="tel:0933701555" 
-            data-tooltip-target="tooltip-phone" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-green-500 rounded-full shadow-md 
-                    hover:bg-green-600 transition-transform hover:scale-110">
-                <i class="fas fa-phone-alt text-lg sm:text-xl"></i>
-                <span class="sr-only">Phone</span>
-            </a>
-            <div id="tooltip-phone" role="tooltip" 
-                class="absolute z-50 invisible inline-block min-w-[220px] sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Số điện thoại: 0973 701 555
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-        </div>
-        
-        <!-- Nút chính -->
-        <button type="button" 
-                data-dial-toggle="speed-dial-menu-default" 
-                aria-controls="speed-dial-menu-default" 
-                aria-expanded="false"
-                class="flex items-center justify-center text-white bg-red-600 rounded-full 
-                    w-12 h-12 sm:w-14 sm:h-14 shadow-lg
-                    hover:bg-red-700 transition-transform hover:scale-110 
-                    focus:ring-4 focus:ring-red-300 focus:outline-none">
-            <i class="fas fa-comment-dots text-xl sm:text-2xl"></i>
-            <span class="sr-only">Mở menu liên hệ</span>
-        </button>
-    </div>
     <script type="module" src="/src/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -328,6 +289,5 @@
             easing: 'ease-in-out', // Hiệu ứng chuyển động mượt mà
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
