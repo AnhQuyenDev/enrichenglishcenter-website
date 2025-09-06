@@ -21,7 +21,7 @@ export const teachers_data = [
             }
         ],
         "contact": {
-            "email": "bichhao.ceo@enrich.edu.vn",
+            "email": "bichhao.ceo@gmail.com",
             "phone": "0933 701 555",
             "facebook": "https://www.facebook.com/bichhao.nguyen.520"
         }
