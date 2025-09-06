@@ -774,7 +774,6 @@ function initNewsDetail() {
     }
 }
 
-
 // 7.2. Trang danh sách tin tức
 function initNewsList() {
     if (window.location.pathname !== "/news") return;
@@ -934,25 +933,26 @@ function initAchievementModal() {
     const modalContent = document.getElementById("modal-content");
     const modalClose = document.getElementById("modal-close");
 
-    if (!modal || !modalContent || !modalClose) return; // không có modal thì thoát
+    if (!modal || !modalContent || !modalClose) return;
 
-    // --- 1. Mở modal khi click vào card ---
-    document.querySelectorAll(".achievement-card").forEach(card => {
-        card.addEventListener("click", () => {
-            const achievementId = card.getAttribute("data-id");
-            const achievement = achievementsData.find(a => a.id == achievementId);
+    // --- 1. Mở modal khi click vào nút "Tìm hiểu thêm" ---
+    document.querySelectorAll(".open-modal-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // ngăn thẻ <a> nhảy lên đầu trang
+
+            const studentId = btn.getAttribute("data-student");
+            const achievement = students.find(a => a.id === studentId);
 
             if (!achievement) return;
 
-            // Render nội dung vào modal
             modalContent.innerHTML = `
                 <h2 class="text-2xl font-bold mb-4">${achievement.title}</h2>
                 <img src="${achievement.image}" alt="${achievement.title}" class="w-full h-64 object-cover rounded mb-4">
                 <p class="text-gray-700 leading-relaxed">${achievement.description}</p>
             `;
 
-            modal.classList.remove("hidden"); // hiện modal
-            document.body.classList.add("overflow-hidden"); // khóa scroll
+            modal.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden");
         });
     });
 
@@ -970,6 +970,7 @@ function initAchievementModal() {
         }
     });
 }
+
 
 // =================================================================
 // PHẦN 9: BOOTSTRAP (CHẠY KHI DOM READY)
