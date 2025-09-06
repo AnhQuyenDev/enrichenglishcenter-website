@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs"></script>
-  <script type="module" crossorigin src="/assets/main-CUAHNj3Q.js"></script>
+  <script type="module" crossorigin src="/assets/main-Ddew5MTT.js"></script>
   <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-DNzQ4Thu.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-B7eV64IE.css">
 </head>
 <body>
 
@@ -55,9 +55,9 @@
         </div>
     </header>
 
-    <main>
+    <main class="overflow-x-hidden  bg-gradient-to-br from-blue-300 via-white to-blue-200">
         <section class="relative h-[70vh] bg-cover bg-top" style="background-image: url('/images/teacher_home_banner.jpg')">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#1E88E5CC] to-[#1E88E500]"></div> 
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
             <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
                 <h1 class="text-5xl font-bold uppercase" data-aos="fade-up" data-aos-duration="500">Gặp gỡ giáo viên quý trọng của Enrich</h1>
                 <p class="mt-4 text-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">Một cộng đồng các nhà giáo dục tận tâm định hình tương lai, một sinh viên tại một thời điểm.</p>
@@ -65,35 +65,70 @@
         </section>
 
         <div class="container mx-auto px-6 py-16">
-            <div class="flex flex-col md:flex-row gap-12 items-center justify-center">
-                <div class="w-full">
-                    <h2 class="text-4xl font-bold mb-8 text-orange-500 text-center uppercase" data-aos="fade-up" data-aos-duration="500">Đội ngũ giáo viên của Enrich</h2>
-                    <div id="teacher-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="500">
-                        </div>
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 uppercase" data-aos="fade-up">Nhà Sáng Lập <span class="text-orange-500">Enrich</span></h2>
+                <div id="founder-container" class="flex justify-center" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 uppercase" data-aos="fade-up">
+                    Giáo Viên <span class="text-orange-500">Nước Ngoài</span>
+                </h2>
+                <div id="foreign-teachers-container" 
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 justify-items-center"
+                    data-aos="fade-up" data-aos-delay="100">
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 text-center mb-8 uppercase" data-aos="fade-up">
+                    Đội Ngũ Giáo Viên <span class="text-orange-500">Enrich</span>
+                </h2>
+                <div id="vietnamese-teachers-container" 
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 justify-items-center"
+                    data-aos="fade-up" data-aos-delay="100">
                 </div>
             </div>
         </div>
-
-        <section class="bg-gray-50" data-aos="fade-up" data-aos-duration="500">
+        
+        <section class="bg-slate-50" data-aos="fade-up" data-aos-duration="500">
             <div class="container mx-auto px-6 py-16">
-                <h2 class="text-4xl font-bold text-center uppercase mb-12">Tại sao chọn giáo viên của Enrich?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                    <div>
-                        <p class="text-5xl font-bold text-orange-500 counter" data-target="30">0+</p>
-                        <p class="text-gray-600 mt-2">Giáo viên có kinh nghiệm</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-orange-500 text-center uppercase mb-12"><span class="text-indigo-800">Tại sao </span>chọn giáo viên của Enrich?</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <div class="bg-blue-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out text-center border-b-4 border-blue-500">
+                        <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-blue-100 mb-6">
+                            <i class="fa-solid fa-chalkboard-user text-4xl" style="color: #1f45c4;"></i>
+                        </div>
+                        <p class="text-5xl font-extrabold text-blue-800 counter" data-target="30" data-suffix="+">0+</p>
+                        <p class="text-lg text-blue-600 mt-2">Giáo viên có kinh nghiệm</p>
                     </div>
-                    <div>
-                        <p class="text-5xl font-bold text-orange-500 counter" data-target="10">0+</p>
-                        <p class="text-gray-600 mt-2">Năm phục vụ</p>
+
+                    <div class="bg-green-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out text-center border-b-4 border-green-500">
+                        <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
+                            <i class="fa-solid fa-school text-4xl" style="color: #63E6BE;"></i>
+                        </div>
+                        <p class="text-5xl font-extrabold text-emerald-800 counter" data-target="10" data-suffix="+">0+</p>
+                        <p class="text-lg text-emerald-600 mt-2">Năm phục vụ</p>
                     </div>
-                    <div>
-                        <p class="text-5xl font-bold text-orange-500 counter" data-target="95">%</p>
-                        <p class="text-gray-600 mt-2">Hài lòng của Học viên</p>
+
+                    <div class="bg-indigo-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out text-center border-b-4 border-indigo-500">
+                        <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-indigo-100 mb-6">
+                            <i class="fa-solid fa-heart text-4xl" style="color: #B197FC;"></i>
+                        </div>
+                        <p class="text-5xl font-extrabold text-indigo-800 counter" data-target="95" data-suffix="%">0%</p>
+                        <p class="text-lg text-indigo-600 mt-2">Hài lòng của Học viên</p>
                     </div>
-                    <div>
-                        <p class="text-5xl font-bold text-orange-500 counter" data-target="10">0+</p>
-                        <p class="text-gray-600 mt-2">Khóa học hàng năm</p>
+
+                    <div class="bg-amber-50 p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ease-in-out text-center border-b-4 border-amber-500">
+                        <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-amber-100 mb-6">
+                            <i class="fa-solid fa-file-lines text-4xl" style="color: #FFD43B;"></i>
+                        </div>
+                        <p class="text-5xl font-extrabold text-amber-800 counter" data-target="10" data-suffix="+">0+</p>
+                        <p class="text-lg text-amber-600 mt-2">Khóa học hàng năm</p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -121,13 +156,7 @@
                     </p>
                     <div class="flex items-center space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-facebook text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-tiktok text-2xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-transform hover:scale-110">
-                            <i class="fa-brands fa-instagram text-2xl"></i>
+                            <i class="fa-brands fa-facebook text-4xl"></i>
                         </a>
                     </div>
                 </div>
@@ -199,78 +228,7 @@
             </div>
         </div>
     </footer>
-    <div data-dial-init class="fixed bottom-6 right-4 md:right-6 z-[100] group">
-    <!-- Menu con -->
-        <div id="speed-dial-menu-default" 
-            class="flex flex-col items-center hidden mb-4 space-y-3">
 
-            <!-- Messenger -->
-            <a href="https://www.facebook.com/bichhao.nguyen.520?locale=vi_VN" 
-            target="_blank" 
-            data-tooltip-target="tooltip-messenger" 
-            data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-blue-600 rounded-full shadow-md 
-                    hover:bg-blue-700 transition-transform hover:scale-110">
-                <i class="fa-brands fa-facebook-messenger text-lg sm:text-xl"></i>
-                <span class="sr-only">Messenger</span>
-            </a>
-            <div id="tooltip-messenger" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Facebook Messenger
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Email -->
-            <a href="mailto:contact@enrichenglishcenter.com" 
-            data-tooltip-target="tooltip-email" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-yellow-500 rounded-full shadow-md 
-                    hover:bg-yellow-600 transition-transform hover:scale-110">
-                <i class="fas fa-envelope text-lg sm:text-xl"></i>
-                <span class="sr-only">Email</span>
-            </a>
-            <div id="tooltip-email" role="tooltip" 
-                class="absolute z-50 invisible inline-block max-w-xs sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Email: contact@enrichenglishcenter.com
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-
-            <!-- Phone -->
-            <a href="tel:0933701555" 
-            data-tooltip-target="tooltip-phone" data-tooltip-placement="left"
-            class="w-12 h-12 sm:w-14 sm:h-14 flex justify-center items-center 
-                    text-white bg-green-500 rounded-full shadow-md 
-                    hover:bg-green-600 transition-transform hover:scale-110">
-                <i class="fas fa-phone-alt text-lg sm:text-xl"></i>
-                <span class="sr-only">Phone</span>
-            </a>
-            <div id="tooltip-phone" role="tooltip" 
-                class="absolute z-50 invisible inline-block min-w-[220px] sm:max-w-sm px-3 py-2 
-                        text-sm font-medium text-white transition-opacity duration-300 
-                        bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip">
-                Số điện thoại: 0973 701 555
-                <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-        </div>
-        
-        <!-- Nút chính -->
-        <button type="button" 
-                data-dial-toggle="speed-dial-menu-default" 
-                aria-controls="speed-dial-menu-default" 
-                aria-expanded="false"
-                class="flex items-center justify-center text-white bg-red-600 rounded-full 
-                    w-12 h-12 sm:w-14 sm:h-14 shadow-lg
-                    hover:bg-red-700 transition-transform hover:scale-110 
-                    focus:ring-4 focus:ring-red-300 focus:outline-none">
-            <i class="fas fa-comment-dots text-xl sm:text-2xl"></i>
-            <span class="sr-only">Mở menu liên hệ</span>
-        </button>
-    </div>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -280,6 +238,5 @@
             easing: 'ease-in-out', // Hiệu ứng chuyển động mượt mà
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
